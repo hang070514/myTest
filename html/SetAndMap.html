@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	const s = new Set();
+	/*[2,3,5,4,5,2,2].forEach(x => s.add(x))
+
+	for(let i of s){
+		//console.log(i);
+	}
+
+	const set = new Set([1,2,3,4,4]);
+	console.log([...set]);*/
+
+	s.add(1).add(2).add(3);
+	/*console.log(s.size);
+	console.log(s.delete(1));
+	console.log(s.has(1));*/
+
+	var arr = [1,2,2,4,6,3,4];
+	var arr1 = Array.from(new Set(arr));
+	//console.log(arr1);
+
+	//s.forEach((value,key) => console.log(key+'::'+value))
+
+	let arr2 = [...s];
+	//console.log(arr2);
+
+	const map = new Map([
+		['name','zhang'],
+		['age',25],
+		['sex','men']
+		]);
+	console.log([...map.keys()]);
+	console.log([...map.values()]);
+	console.log([...map.entries()]);
+</script>
+</html>

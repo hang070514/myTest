@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body{
+			height: 2000px;
+		}
+		#box{
+			position: absolute;
+			width: 60px;
+			height: 150px;
+			background-color: red;
+			top:40%;
+			right: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script type="text/javascript">
+	var timer = null;
+	window.onscroll=function(){
+		var mBox = document.getElementById('box');
+		var mscrollTop = document.documentElement.scrollTop ||
+		document.body.scrollTop;
+		//console.log(mscrollTop);
+		var mHeight = document.documentElement.clientHeight;
+		//console.log(mHeight);
+
+		var pos = (mHeight - mBox.offsetHeight)/2;
+		//console.log('pos==='+pos);
+		var distance = parseInt(pos+mscrollTop);
+		console.log('top==='+mBox.offsetTop);
+		clearInterval(timer);
+		timer = setInterval(function(){
+			
+			//console.log(distance+'===='+mBox.offsetTop);
+			var speed = (distance - mBox.offsetTop)/7;
+			speed = speed > 0 ? Math.ceil(speed):Math.floor(speed);
+			if(mBox.offsetTop == distance){
+				clearInterval(timer);
+				
+			}else{
+				//mBox.style.top = distance+ 'px';
+				mBox.style.top = mBox.offsetTop + speed + 'px';
+			}
+			 
+		},40);
+	
+	}
+</script>
+</html>

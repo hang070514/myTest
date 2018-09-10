@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.min.js"></script>
+    <style>
+        .a{
+            width: 100px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .b{
+            width: 100%;
+            height: 10px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a">
+        <div class="b"></div>
+    </div>
+</body>
+<script>
+    $.each(['foo','bar','baz'],function (id,val) {
+       // console.log('element   '+id+' is '+val);
+    })
+    $.each({'zhang':'20','zhao':'50'},function(a,b){
+       // console.log('name:'+a+',age:'+b);
+    });
+    //匿名函数自执行里面的所有东西都是一个局部的，防止和其他代码冲突
+    (function () {
+        var a = 10;
+        //console.log('a==='+a);
+    })();
+    //控制台报错，说a is not defined
+    //alert(a);
+
+    //如何访问到匿名函数自执行中的方法
+    //把对外提供的接口作为window的属性或者是方法
+    (function () {
+        var b = 1;
+        function my() {
+            console.log('b===='+b);
+        }
+        window.abc = my;
+    })();
+    //abc();
+
+
+   /* var foo = 5||c;
+    console.log('foo===='+foo);
+    var bar = 0||c;
+    console.log('bar===='+bar);*/
+
+    //var foo1 = 5&&z;
+    //console.log('foo1===='+foo1);
+   /* var bar1 = 0&&c;
+    console.log('bar1====='+bar1);
+    var foo1 = 5&&c;
+    console.log('foo1===='+foo1);*/
+   if(2){
+      // console.log('22222');
+   }
+    var a='suibian';
+    if(!!a){
+        //console.log(typeof a)
+        //console.log(typeof !!a)
+        //console.log('aaaa');
+    }
+
+    var obj={};
+    if(!!obj){
+        //console.log(typeof obj);
+        //console.log(!!obj);
+        //console.log(typeof null);
+        //console.log(obj===null);
+    }
+
+    function  my() {
+        console.log(1234);
+    }
+    my();
+    var b = function () {
+        console.log('this is b method');
+    }
+    //b();
+    //Number String undefined boolean Object null
+    if(my){
+        console.log(typeof my);
+        console.log(typeof b);
+        console.log(typeof !!my);
+        console.log('hahahah');
+    }else{
+        console.log('qwersd');
+        console.log(typeof my());
+    }
+
+</script>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+		}
+		#box{
+			position: relative;
+			width: 300px;
+			height: 300px;
+			border: 1px solid red;
+			overflow: hidden;
+		}
+
+		img{
+			position: absolute;
+			left: 50%;
+			top:50%;
+			transform: translate(-50%,-50%);
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img id="image" src="../login.png">
+	</div>
+</body>
+<script type="text/javascript">
+
+		var image = document.getElementById('image');
+		var box = document.getElementById('box');
+
+		var offsetLeft = image.offsetLeft;
+		var offsetTop = image.offsetTop;
+
+		var left = window.getComputedStyle(image,null).left;
+		var top = window.getComputedStyle(image,null).top;
+
+		var marginLeft = window.getComputedStyle(image,null).marginLeft;
+		var marginTop = window.getComputedStyle(image,null).marginTop;
+
+		//console.log('left===',left,marginLeft);
+
+		function big(){
+			image.width = image.width * 1.05;
+	        image.height = image.height * 1.05;
+	        //console.log('放大后image.width===',image.width);
+	        //console.log('两次差===',Math.round(image.width * 0.05));
+	       /* var wcha = Math.round(image.width * 0.05)/2;
+	        var hcha = Math.round(image.height * 0.05)/2;	
+	        console.log('两次差===',wcha)
+	        image.style.left = parseInt(left) - wcha + 'px';
+	        image.style.top = parseInt(top) - hcha + 'px';*/
+	        //console.log('两次差===',image.style.left,image.offsetLeft,image.offsetTop)
+
+	       /* image.style.marginLeft = parseInt(marginLeft) + wcha + 'px';
+	        image.style.marginTop = parseInt(marginTop) + hcha + 'px';*/
+
+	        //console.log('image.style.marginLeft===',image.style.marginLeft);
+		}
+
+		function small(){
+			image.width = image.width * 0.95;
+	        image.height = image.height * 0.95;
+		}
+		
+
+		console.log('offsetLeft===',offsetLeft);
+		console.log('offsetTop===',offsetTop);
+		
+
+		image.addEventListener('mousewheel',mouseWheelhandler,false);
+
+		function mouseWheelhandler(e){
+	        if(e.wheelDelta == 120){
+	           big();
+	        }else{
+	           small();
+	        }
+		}
+
+		image.onmousedown=function(e){
+			//console.log('e===',e);
+			var event = e || window.event;
+			event.preventDefault();
+			var disX = e.clientX - image.offsetLeft;
+			var disY = e.clientY - image.offsetTop;
+
+			box.onmousemove=function(e){
+				event = e;
+				event.preventDefault();
+				if(image.width > 300 && image.height > 300){
+					image.style.left = event.clientX - disX + 'px';
+					image.style.top = event.clientY - disY + 'px';
+					//console.log('image.style.left=====',image.style.left,image.style.top);
+				}
+				
+			}
+			//图片移出父盒子取消移动事件,防止移动过快触发鼠标移出事件,导致鼠标弹起事件失效
+			box.onmouseleave = function(){
+				box.onmousedown = null;
+				box.onmousemove = null;
+			}
+			box.onmouseup=function(){
+				box.onmousedown = null;
+				box.onmousemove = null;
+			}
+		}	
+
+</script>
+</html>

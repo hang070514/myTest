@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#box{
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+
+</body>
+<script type="text/javascript">
+	var my = document.getElementById('box');
+	var width = document.documentElement.clientWidth;
+	var height = document.documentElement.clientHeight;
+
+
+	var maxW = width - my.offsetWidth;
+	var maxH = height - my.offsetHeight;
+
+	console.log(maxW);
+	console.log(maxH);
+	console.log(height);
+
+	document.onkeydown=function(e){
+		var n = 0;
+		switch(e.keyCode){
+			case 37: //左键
+			console.log(my.offsetLeft);
+				if(my.offsetLeft<=0){
+					my.style.left = 0+'px';
+				}else{
+					my.style.left = my.offsetLeft-10+'px';
+				}
+				
+			break;
+			case 38: //上键
+			console.log(n);
+				if(my.offsetTop<=0){
+					my.style.top = 0+'px';
+				}else{
+					my.style.top = my.offsetTop-10+'px';
+				}
+				
+			break;
+			case 39: //右键
+				console.log(my.offsetLeft);
+				if(my.offsetLeft >= maxW){
+					my.style.left = maxW +'px';
+				}else{
+					my.style.left = my.offsetLeft + 10 +'px';
+				}
+				
+				
+			break;
+			case 40: //下键
+				console.log(my.offsetTop);
+				if(my.offsetTop >= maxH){
+					my.style.top = maxH + 'px';
+				}else{
+					my.style.top = my.offsetTop+10+'px';
+				}
+				
+			break;
+		}
+}
+</script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	</style>
+</head>
+<body>
+	<div class="content">
+	</div>
+	
+</body>
+	<script type="text/javascript">
+		/*let promise = new Promise(function(resolve,reject){
+			console.log('Promise');
+			resolve();
+		});
+		promise.then(function(){
+			console.log('resolved.');
+		})
+
+		console.log('hi');*/
+
+	/*	var v1 = 'abc';
+		var v2 = true;
+		var v3 = 10;
+		var obj = Object.assign({},v1,v2,v3);
+		console.log(obj);*/
+
+	/*	let s = Symbol();
+		console.log(typeof(s));
+		let s1 = Symbol('foo');
+		let s2 = Symbol('bar');
+
+		console.log(s1);
+		console.log(s2);
+
+		let sym = Symbol();
+		console.log(Boolean(sym));*/
+
+		/*let mySymbol = Symbol();
+		let a = {};
+		a[mySymbol] = 'hello';
+		console.log(a[mySymbol]);
+		let b = {
+			[mySymbol]:'helloasa'
+		};
+		console.log(b[mySymbol]);
+		let c = {};
+		Object.defineProperty(c,mySymbol,{value:'world'});
+		console.log(c[mySymbol]);*/
+
+		/*const obj = {};
+		let a = Symbol('a');
+		let b = Symbol('b');
+		obj[a] = 'hello';
+		obj[b] = 'world';
+		var arr = Object.getOwnPropertySymbols(obj);
+		console.log(arr);*/
+
+		class MySearch{
+			constructor(value){
+				this.value = value;
+			}
+			[Symbol.search](string){
+				return string.indexOf(this.value);
+			}
+		}
+		console.log('foobar'.search(new MySearch('b')));
+		console.log('foobar'.substr(3));
+	</script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			padding: 0px;
+			margin: 0px;
+		}
+		#box{
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+		button{
+			position: absolute;
+			top:200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<button>原路返回</button>
+</body>
+<script type="text/javascript">
+	var my = document.getElementById('box');
+	var btn = document.getElementsByTagName('button')[0];
+	var arr = [];
+	document.onmousedown=function(e){
+		console.log(e.clientX);
+		console.log(my.offsetLeft+'::::'+my.offsetTop);
+		var pos = new Object();
+		pos.x = my.offsetLeft;
+		pos.y = my.offsetTop;
+		arr.push(pos);
+		//my.style.left = e.clientX - 50 + 'px';
+		//my.style.top = e.clientY - 50 + 'px';
+
+		document.onmousemove = function(e){
+			var pos = new Object();
+			pos.x = e.clientX;
+			pos.y = e.clientY;
+			arr.push(pos);
+			my.style.left = e.clientX - 50 + 'px';
+			my.style.top = e.clientY - 50 + 'px';
+		}
+		//return false;
+	}
+	document.onmouseup=function(){
+		console.log('length===='+arr.length);
+		document.onmousemove = null;
+	}
+	btn.onclick=function(){
+		var timer = setInterval(function(){
+			var postion = arr.pop();
+			console.log(postion);
+			
+			if(postion){
+				my.style.left = postion.x + 'px';
+				my.style.top = postion.y + 'px';
+			}else{
+				clearInterval(timer);
+			}
+		},30);
+		//return false;
+	}
+</script>
+</html>

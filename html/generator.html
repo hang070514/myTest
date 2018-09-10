@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+/*	var myIterable = {};
+	myIterable[Symbol.iterator] = function* (){
+		yield 1;
+		yield 2;
+		yield 3;
+	}
+	//console.log([...myIterable]);
+	for(let a of myIterable){
+		console.log(a);
+	}*/
+
+	function* helloWorldgenerator(){
+		yield 'hello';
+		yield 'world';
+		return 'ending';
+	}
+
+	var hw = helloWorldgenerator();
+	/*console.log(hw.next());
+	console.log(hw.next());
+	console.log(hw.next());
+	console.log(hw.next());*/
+
+	/*function* f(){
+		yield 'zhang';
+		console.log('执行了'+(yield));
+	}
+	var generator = f();
+	generator.next();*/
+	/*var generator = f();
+	setTimeout(function(){
+		generator.next();
+	},2000);*/
+
+	function* f(){
+		for(var i = 0; true; i++){
+			var reset = yield i;
+			if(reset){
+				i = -1;
+			}
+		}
+	}
+
+	var g = f();
+
+	console.log(g.next());
+	console.log(g.next());
+	console.log(g.next(true));
+</script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+    <div id="test">
+
+    </div>
+    <div class="test"></div>
+</body>
+<script>
+    var a = '\u{41}\u{42}\u{43}';
+    var b = '\u{20BB7}';
+    var c = '\u{6f}';
+    var d = '\u0076';
+    console.log(b);
+    console.log(c);
+    console.log(d);
+
+
+    for(let zh of 'zhang'){
+        console.log(zh);
+    }
+
+    //var x = 'zh';
+    console.log('x'.padStart(5,'ab'));
+    console.log('x'.padEnd(5,'ab'));
+
+
+    //模板字符串
+    let name='zhang',age=26;
+/*    document.getElementById('test').append(
+        `this is <i>${name}</i>,his age is ${age}`
+    );*/
+   /* document.getElementById('test').append(
+        '<span>hello world</span>'
+    )*/
+   var parent = document.getElementById('test');
+   var child = document.createElement('span');
+   //child.innerHTML='hello,this is '+name+',his age is '+age;
+   //parent.appendChild(child);
+    //parent.append(child);
+
+    $('#test').html(`
+    <ul>
+
+        <li>first</li>
+        <li>second</li>
+        <li>third</li>
+    </ul>`.trim());
+    $('.test').html(`
+    <ul>
+        <li>first</li>
+        <li>second</li>
+    </ul>`);
+
+    console.log(String.raw`Hi\\n${2+4}`);
+</script>
+</html>

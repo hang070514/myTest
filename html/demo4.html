@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 90px;
+			height: 90px;
+			-moz-border-radius:50%;
+			-webkit-border-radius:50%;
+			border-radius:50%;
+			behavior: url(PIE.htc);
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		window.onload=function(){
+
+
+		/*	var results = Number(0.1+0.2);
+			console.log(results);
+			console.log(results.toFixed(1));*/
+		/*	Math.formatFloat = function(f, digit) { 
+			    var m = Math.pow(10, digit); 
+			    return parseInt(f * m, 10) / m; 
+			} 
+
+			var result1 = Number(1.8-2);
+			var result2 = parseFloat(1.8-2);
+			//var result3 = parseInt(1.04-1);
+			
+			console.log(result1);
+			console.log(result2);
+			console.log(Math.formatFloat(result1,1));*/
+
+			//console.log(Math.floor(1.2));  向下取整
+			//console.log(Math.ceil(1.2));   向上取整
+			//var floatObj = function(){
+				/*判断obj是否为一个整数*/
+				function isInteger(obj){
+					return Math.floor(obj) === obj;
+				}
+
+				/**
+				* 将一个浮点数转换成整数，返回整数和倍数
+				* 如 3.14 》》314  倍数是100
+				*
+				*/
+
+				function toInteger(floatNum){
+					var ret = {times:1,num:0};	
+
+					//是整数
+					if(isInteger(floatNum)){
+						ret.num = floatNum;
+						return ret;	
+					}
+
+					var strfi = floatNum + '';
+					//查找小数点的下标
+					var dotPos = strfi.indexOf('.');
+					console.log('dotPos===='+dotPos);
+					//获取小数的位数
+					var len = strfi.substr(dotPos+1).length;
+					console.log('len===='+len);
+					//Math.pow(10,len)指定10的len次幂。
+					var time = Math.pow(10,len);
+
+					//将浮点数转化为整数
+					var intNum = parseInt(floatNum*time + 0.5,10);
+					console.log('intNum===='+intNum);
+					ret.times = time;
+					ret.num = intNum;
+					return ret;
+				}
+
+				function operation(a,b,digits,op){
+					var o1 = toInteger(a);
+					var o2 = toInteger(b);
+					var n1 = o1.num;
+					var n2 = o2.num;
+					var t1 = o1.times;
+					var t2 = o2.times;
+					var max = t1 > t2 ? t1 : t2;
+					var result = null;
+					switch(op){
+						case 'add':
+							if(t1 === t2){
+								result = n1 + n2;
+							}else if(t1 > t2){
+								result = n1 + n2 * (t1/t2);
+							}else{
+								result = n1 * (t2/t1) + n2;
+							}
+
+							return result / max;
+							break;
+						case 'subtract':
+							if(t1 === t2){
+								result = n1  - n2;
+							}else if(t1 > t2){
+								result = n1 - n2 * (t1/t2);
+							}else{
+								result = n1 * (t2/t1) - n2;
+							}
+
+							return result / max;
+							break;
+						case 'multiply':
+							result = (n1 * n2)/(t1 * t2);
+							return result;
+							break;
+						case 'divide':
+							result = (n1 / n2)/(t2 / t1);
+							return result;
+							break;
+					}	 
+
+				}
+			//}
+				//var obj = new floatObj();
+				//var obj = toInteger(3.1415926);
+				//console.log(obj);
+				var res = operation(2.7,0.3,1,'divide');
+				console.log(res);
+
+		}
+	</script>
+</body>
+</html>

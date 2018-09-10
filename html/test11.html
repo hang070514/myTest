@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //好友列表
+    var friend = [{ "id": "4", "name": "zz" }, { "id": "2", "name": "ls" },{ "id": "3", "name": "ww" }];
+    //最近联系人
+    var concat = [ { "id": "3", "name": "ww" },{ "id": "2", "age": "ls" },{ "id": "4", "age": "zz" },{"id": "1", "age": "zs"}];
+    //var concat = [{ "id": "2", "age": "ls" },{ "id": "4", "age": "zz" }];
+
+    //根据最近联系人顺序调整好友列表
+/*    for(i = 0; i < concat.length; i++) {
+        var id = concat[i]["id"];
+        for(j = 0; j < friend.length; j++) {
+            var tid = friend[j]["id"];
+            if(id==tid){
+                //插入位置，从0开始
+                friend.splice(i,0,friend[j]);
+                //删除原位置
+                friend.splice(j+1,1)
+            }
+        }
+    }*/
+    for(i = 0; i < concat.length; i++) {
+        var cid = concat[i]["id"];
+        var ind = friend.findIndex(item=>item.id == cid);
+        if(ind == -1){
+            concat.splice(i,1);
+        }
+    }
+
+    for(i = 0; i < concat.length; i++) {
+        var id = concat[i]["id"];
+        for(j = 0; j < friend.length; j++) {
+            var tid = friend[j]["id"];
+            if(id==tid){
+                //插入位置，从0开始
+                friend.splice(i,0,friend[j]);
+                //删除原位置
+                friend.splice(j+1,1)
+            }
+        }
+    }
+    console.log(friend);
+   /* for(k = 0; k < friend.length; k++) {
+        console.log("id="+friend[k]["id"]+",name="+friend[k]["name"]);
+    }*/
+</script>
+</html>

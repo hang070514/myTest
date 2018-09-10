@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js复习</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//var num = '10';
+		//var num = '10a'
+		var num = 'a10';
+		console.log(Number(num));
+		console.log(parseInt(num));
+
+		console.log(String(undefined));
+		console.log(String(null));
+
+		//console.log(null.toString());
+		//console.log(undefined.toString());
+		console.log('zhang'.toString());
+
+		/*var a;
+		console.log(a);
+		console.log(a==null);
+		console.log(a===null);*/
+
+
+	/*	(function(){
+			var a=5;
+			alert(window.a);
+			var a = 10;
+			//var a=5;
+			alert(a);
+		})();*/
+
+		var str = 'hello';
+		//console.log([...str]);
+
+
+		const arr = ['red','green','blue'];
+		const obj = {};
+		obj[Symbol.iterator] = arr[Symbol.iterator].bind(arr);
+
+		for(let v of obj){
+			//console.log(v);
+		}
+
+		for(let a in arr){
+			console.log(a+':::'+arr[a]);
+		}
+
+		for(let a of arr){
+			//console.log(a);
+		}
+
+		//console.log([...arr.entries()]);
+		for(let [key,value] of arr.entries()){
+			//console.log(key+';;;'+value);
+		}
+
+		arr.forEach(function(value){
+			//console.log(value);
+		});
+
+
+	</script>
+</body>
+</html>

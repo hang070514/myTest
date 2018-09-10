@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="shuffle">shuffle</button>
+        <button @click="add">add</button>
+        <button @click="remove">remove</button>
+        <br/>
+        <transition-group name="list1" tag="p">
+            <span v-for="i in item" v-bind:key="i" class="list-item">{{i}}</span>
+        </transition-group>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            item:[1,2,3,4,5,6,7,8,9],
+            nextNum:10
+        },
+        methods:{
+            randomNum:function () {
+                return parseInt(Math.random()*this.item.length);
+            },
+            add:function () {
+                //第一个参数是要起始位置，第二个参数是删除的项数 第三个参数是插入项
+                this.item.splice(this.randomNum(),0,this.nextNum++)
+            },
+            remove:function () {
+                //第一个参数是要删除的起始位置  第二个是要删除的项数
+                this.item.splice(this.randomNum(),1);
+            },
+            shuffle:function () {
+                this.item = _.shuffle(this.item)
+            }
+        }
+    })
+</script>
+<style>
+    #app span{
+        transition: all 1s;
+        display: inline-block;
+        margin-left: 10px;
+    }
+    .list1-enter, .list1-leave-to{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    .list1-leave-active{
+        position: absolute;
+    }
+</style>
+

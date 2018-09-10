@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id="app">
+    <div v-if="false">
+        如果是true，则显示
+    </div>
+    <div v-else>
+        如果是false，则显示
+    </div>
+    <div v-show=this.flag>showshow</div>
+    <div style="visibility: hidden">visibility:hidden</div>
+    <div>hello</div>
+    <ol>
+        <li v-for="value in student">
+            {{value}}
+        </li>
+    </ol>
+    <ul>
+        <li v-for="(value,key,index) in student">
+            {{key}}:::{{value}}{{index}}
+        </li>
+    </ul>
+    <ul>
+        <li v-for="(item,index) in arr" v-bind="item.key">
+            {{item.name}}
+        </li>
+    </ul>
+    <button @click="cli">改变数组</button>
+    <ul>
+        <li v-for="n in evenNum">{{n}}</li>
+    </ul>
+
+    <ul>
+        <li v-for="n in even(num)">{{n}}</li>
+    </ul>
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            flag: false,
+            student:{
+                name:'zh',
+                age:25,
+                sex:'men'
+            },
+            arr:[
+                {name:'zhang'},{name:'wang'},{name:'li'}
+            ],
+            item:['a','b','c'],
+            obj:{
+                name:'zhang'
+            },
+            num:[1,2,3,4,5,6]
+        },
+        methods:{
+            cli:function () {
+                //console.log(this.obj);
+                //Vue.set(this.item,1,'z');
+                //this.$set(this.item,2,'q');
+                //Vue.set(this.obj,'age',25);
+                //app.$set(this.obj,'gender','men');
+                //console.log(this.item);
+                //console.log(Vue);
+
+                this.obj = Object.assign({},this.obj,{
+                    age:29,
+                    gender:'women'
+                })
+                console.log(this.obj);
+            },
+            even:function (num) {
+                return num.filter(function (val) {
+                    return val % 2 != 0
+                })
+            }
+        },
+        computed:{
+            evenNum:function () {
+                return this.num.filter(function (value) {
+                    return value % 2 == 0
+                })
+            }
+        }
+    })
+
+
+</script>
+</html>

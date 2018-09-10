@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-for="msg in messages">{{msg}}</div>
+        <my-component v-on:handle="handSendMessage"></my-component>
+    </div>
+</body>
+<script>
+    Vue.component('myComponent',{
+        template:'<div>' +
+        '<input v-model="message"/>'+
+        '<button v-on:click="handMessage">send</button>'+
+        '</div>',
+        data:function () {
+            return {
+                message:'test'
+            }
+        },
+        methods: {
+            handMessage:function () {
+                this.$emit('handle',{message:this.message})
+            }
+        }
+    })
+    var app = new Vue({
+        el:'#app',
+        data:{
+            messages:[]
+        },
+        methods:{
+            handSendMessage:function (payload) {
+                this.messages.push(payload.message)
+            }
+        }
+    })
+</script>
+</html>

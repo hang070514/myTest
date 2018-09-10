@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#box{
+    width: 400px;
+    height: 320px;
+    position: relative;
+    overflow: hidden;
+}
+#imgList{
+    width: 400px;
+    height: 320px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: all .8s ease;
+}
+li{
+    list-style: none;
+
+}
+#imgList li{
+    float: left;
+}
+
+#descList{
+    position: absolute;
+    height: 15px;
+    bottom: 5px;
+    right: 5px;
+}
+
+#descList li{
+    float: left;
+    margin-right: 3px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    background-color: #adaabc;
+}
+
+#descList .active{
+    background-color: #f00;
+}
+.left{
+    position: absolute;
+    top:40%;
+    display: none;
+}
+.right{
+    position: absolute;
+    display: none;
+    top:40%;
+    right: 0px;
+}

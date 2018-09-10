@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#m1{
+			float: left;
+			border: 1px solid red;
+		}
+		#m2{
+			float: right;
+			border:1px solid blue;
+		}
+
+		#m1,#m2
+
+{
+
+padding-bottom: 32767px !important;
+
+margin-bottom: -32767px !important; 
+
+}
+
+@media all and (min-width: 0px) {
+
+#m1,#m2
+
+{
+
+padding-bottom: 0 !important;
+
+margin-bottom: 0 !important; 
+
+}
+
+#m1:before, #m2:before
+
+{
+
+content: '[DO NOT LEAVE IT IS NOT REAL]';
+
+display: block;
+
+background: inherit;
+
+padding-top: 32767px !important;
+
+margin-bottom: -32767px !important;
+
+height: 0;
+
+}
+
+}
+	</style>
+</head>
+<body>
+	<div id="m1">
+		a<br>
+		b<br>
+		a<br>
+		b<br>
+		a<br>
+		b<br>
+		a<br>
+		b<br>
+	</div>
+	<div id="m2">
+		fkkldfsjkdsl<br>
+		fgwlkjflsdfds<br>
+		dsakjkfdsfds<br/>
+	</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+</body>
+<script>
+    var myMixin = {
+        created:function () {
+            this.hello()
+        },
+        methods:{
+            hello:function () {
+                console.log('hello from mixin');
+            }
+        }
+    }
+
+    var Component = Vue.extend({
+        mixins:[myMixin]
+    })
+
+    var component = new Component()
+</script>
+</html>

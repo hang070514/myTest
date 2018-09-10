@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <input v-model="parentMsg">
+        <child v-bind:message="parentMsg"></child>
+        <ol>
+            <todo-item v-for="item in sites" v-bind:todo="item"></todo-item>
+        </ol>
+        <input v-focus>
+        <input>
+    </div>
+</body>
+<script>
+    Vue.directive('focus',{
+        inserted:function (el) {
+            el.focus()
+        }
+    })
+    Vue.component('child',{
+            props:['message'],
+            template: '<span>{{message}}</span>'
+    })
+    Vue.component('todo-item',{
+        props:['todo'],
+        template:'<li>{{todo.text}}</li>'
+    })
+    var app = new Vue({
+        el:'#app',
+        data:{
+            parentMsg:'父组件信息',
+            sites:[
+                {text:'js'},{text:'html'},{text:'css'}
+            ]
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+        <!--<i style="visibility: hidden">获取的数据是：</i><span></span>-->
+        <i style="display: none">获取的数据是：</i><span></span>
+</body>
+<script>
+    $(function () {
+        $.ajax({
+                url: '../my.json',
+                type:'get',
+                success:function (arg) {
+                    console.log(arg.name);
+                    setTimeout(function () {
+                        //$('i').css('visibility','visible');
+                        $('i').css('display','block');
+                        $('span').text(arg.name);
+                    },2000)
+
+                },
+                error:function (err) {
+                    console.log(err);
+                }
+            }
+        )
+    })
+</script>
+</html>

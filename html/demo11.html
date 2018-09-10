@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        function examinee(name, score, fatherName) {
+            return {
+                name: name,
+                score: score,
+                fatherName: fatherName
+            };
+        }
+
+        // 审阅考生们
+        function judge(examinees) {
+            var result = {};
+            for (var i in examinees) {
+                var curExaminee = examinees[i];
+                var ret = curExaminee.score;
+                //console.log('i'+i+':score='+ret);
+                // 判断是否有后门关系
+                if (curExaminee.fatherName === 'xijinping') {
+                    ret += 1000;
+                } else if (curExaminee.fatherName === 'ligang') {
+                    ret += 100;
+                } else if (curExaminee.fatherName === 'pengdehuai') {
+                    ret += 50;
+                }
+                result[curExaminee.name] = ret;
+                //console.log(curExaminee.name);
+                //console.log(result[curExaminee.name]);
+            }
+            return result;
+        }
+
+        var lihao = examinee("lihao", 10, 'ligang');
+        var xida = examinee('xida', 8, 'xijinping');
+        var peng = examinee('peng', 60, 'pengdehuai');
+        var liaoxiaofeng = examinee('liaoxiaofeng', 100, 'liaodaniu');
+
+        var result = judge([lihao, xida, peng, liaoxiaofeng]);
+
+        //console.log(result);
+        for (var name in result) {
+           // console.log("name:" + name);
+           // console.log("score:" + result[name]);
+        }
+
+        (function test() {
+            //alert('test');
+            var obj = {};
+            var arr = "Boolean Number String Function Array Date RegExp Object Error".split(" ");
+            jQuery.each(arr,function (i,name) {
+                obj["[object"+name+"]"] = name.toLowerCase();
+                console.log(i+':'+name);
+            })
+            console.log(obj);
+          /*  arr.each(function (i,name) {
+                console.log(i+':'+name);
+            })*/
+        /*
+            "Boolean Number String Function Array Date RegExp Object Error".split(" ").each(function (i,name) {
+                obj["[object"+name+"]"] = name.toLowerCase();
+                console.log(i+':'+name);
+            })*/
+        })()
+    </script>
+</body>
+</html>

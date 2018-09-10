@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<style type="text/css">
+	span{
+		color: red;
+	}
+	label{
+		font-family: 'Miscroft Yahei';
+		font-size: 14px;
+		color: #000;
+	}
+	.con{
+		display: inline-block;
+		position: absolute;
+	}
+</style>
+<body>
+	<p>
+		<label for="phone"><span>*</span>手机号码</label>
+		<input style="width:200px" type="text" placeholder="请填写您的手机号码，便于我们与您取得联系" >
+	</p>
+	<p style="position: relative;">
+		<label for="con" class="con"><span>*</span>意见反馈</label>
+		<label></label>
+		<textarea placeholder="请填写您的意见或建议，您的支持是我们最大的动力！" style="margin-left:70px;height:50px;width:200px;"></textarea>
+	</p>
+</body>
+	<script type="text/javascript">
+		/*$(function () {
+			$.ajax({
+				type:'get',
+				url:'../data.json',
+				success:function (res) {
+					console.log(res[0].xPercent);
+					var w = res[0].xPercent;
+					var mHtml = '<div style="position:absolute;top:'+res[0].y+';left:'+res[0].x+';width: '+res[0].xPercent+'px;height: '+res[0].yPercent+'px;background: #f00"></div>' +
+						'<div style="position:absolute;top:'+res[1].y+';left:'+res[1].x+'px;width: '+res[1].xPercent+'px;height: '+res[1].yPercent+'px;background: #0f0"></div>';
+					$('body').append(mHtml);
+                },
+				error:function (res) {
+					console.log('error');
+                }
+			})
+        })*/
+
+		var arr = [1,2,3,4,5,6];
+		var arr1 = arr.splice(2,1);
+		console.log('arr====',arr);
+	</script>
+</html>

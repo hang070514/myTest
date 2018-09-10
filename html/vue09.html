@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <label for="b">单个复选框</label><br/>
+        <input type="checkbox" id="b" v-model="a">{{a}}<br/>
+        <p>多个复选框</p>
+
+        <input type="checkbox" id="js" value="js" v-model="box">
+        <label for="js">js</label>
+        <input type="checkbox" id="html" value="html" v-model="box">
+        <label for="html">html</label>
+        <input type="checkbox" id="css" value="css" v-model="box">
+        <label for="html">css</label>
+        选择的值为：{{box}}
+
+        <br/>
+        <input type="radio" id="java" value="java" v-model="check">
+        <label for="java">java</label>
+        <input type="radio" id="android" value="android" v-model="check">
+        <label for="android">android</label>
+        <p>选中的值为：{{check}}</p>
+
+        <select v-model="selected" name="net">
+            <option value="">选择一个网站</option>
+            <option value="http:ww.baidu.com">百度</option>
+            <option value="http:www.google.com">谷歌</option>
+        </select>
+        <p>你选的网站是 {{selected}}</p>
+
+        <input type="text" v-model.lazy="msg"><br/>
+        <p>{{msg}}</p>
+        <input type="number" v-model.number="age" id="age" @change="get"><br/>
+        {{age}}
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            age:27,
+            msg:'hello',
+            a:false,
+            box:[],
+            check:'java',
+            selected:''
+        },
+        created:function(){
+
+        },
+        mounted:function () {
+            this.get();
+        },
+        methods:{
+            get:function(){
+                //var val = document.getElementById('age').value;
+                console.log(typeof this.age);
+            }
+
+        },
+        watch:{
+            age:function (newVal,oldVal) {
+                console.log('newVal===='+newVal);
+                console.log('oldVal===='+oldVal);
+            }
+        }
+    })
+
+ /*   app.$watch('age',function (n,o) {
+        console.log('new==='+n);
+        console.log('old=='+o);
+    })*/
+</script>
+</html>

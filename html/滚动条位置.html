@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            overflow-y:scroll;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p>a</p>
+        <br>
+        <p>b</p>
+        <br>
+        <p>c</p>
+        <br>
+        <p>a</p>
+        <br>
+        <p>b</p>
+        <br>
+        <p>c</p>
+        <br>
+        <p>a</p>
+        <br>
+        <p>b</p>
+        <br>
+        <p>c</p>
+        <br>
+        <p>a</p>
+        <br>
+        <p>b</p>
+        <br>
+        <p>c</p>
+        <br>
+    </div>
+</body>
+<script>
+    var box = document.getElementById('box');
+    box.onscroll=function (e) {
+        console.log('e.scrollHeight=======',this.scrollHeight);
+        console.log('e.scrollTop=======',this.scrollTop);
+    }
+</script>
+</html>

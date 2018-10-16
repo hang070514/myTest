@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+     <div id="d1">nihao<input type="text" id="input-box"> </div>hello<div id="d2"></div>
+</body>
+<script type="text/javascript">
+
+	var div1 = document.getElementById('d1');
+	var div2 = document.getElementById('d2');
+	//console.log('====',div1.hasChildNodes());
+	if(div1.hasChildNodes()){
+		div1.removeChild(div1.childNodes[0]);
+	}  
+	document.getElementById('input-box').onkeypress = function (event) {
+		var self = this;
+		console.log('self',self);
+		setTimeout(function(){
+			self.value = self.value.toUpperCase();
+  			console.log(this);
+		},0)
+  		
+	}
+
+	function timeout(ms){
+		return new Promise((resolve,reject)=>{
+			setTimeout(console.log('hello'),ms,'done')	
+		})
+	}
+	//timeout(4000);
+
+	var p1 = new Promise(function(resolve,reject){
+		//resolve('成功');
+		reject('失败')
+	})
+	p1.then(console.log,console.error);
+
+	var arr = [301,40,34];
+	arr.sort(function(a,b){
+		return a - b;
+	})
+	console.log(arr);
+
+</script>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	
+<div class="app">
+  <div id="my">{{msg}}</div>
+  <button @click="changeMsg">
+    Change the Message
+  </button>
+
+</body>
+<script type="text/javascript">
+	var vm = new Vue({
+  el: '.app',
+  data: {
+    msg: 'Hello Vue'
+  },
+  beforeCreate:function(){
+      console.group('=====beforeCreate创建前状态======');
+      console.log('el   :',this.$el);
+      console.log('data   :',this.$data);
+      console.log('msg   :',this.msg);
+  },
+  created:function(){
+      console.group('=====created创建完毕状态======');
+      console.log('el   :',this.$el);
+      console.log('data   :',this.$data);
+      console.log('msg   :',this.msg);
+  },
+  beforeMount:function(){
+    console.group('=====beforeMount挂载前状态======');
+      console.log('el   :',this.$el);
+      console.log('data   :',this.$data);
+      console.log('msg   :',this.msg);
+  },
+  mounted:function(){
+    console.group('=====mounted过载结束状态======');
+      console.log('el   :',this.$el);
+      console.log('data   :',this.$data);
+      console.log('msg   :',this.msg);
+  },
+  beforeUpdate:function(){
+    console.group('=====beforeUpdate更新前状态======');
+      console.log('el   :',this.$el);
+      console.log('data   :',this.$data);
+      console.log('msg   :',this.msg);
+  },
+  updated:function(){
+     console.group('=====updated更新完毕状态======');
+      console.log('el   :',this.$el);
+      console.log('data   :',this.$data);
+      console.log('msg   :',this.msg);
+  },  
+  beforeDestory:function(){
+      console.group('=====beforeDestory销毁前状态======');
+      console.log('el   :',this.$el);
+      console.log('data   :',this.$data);
+      console.log('msg   :',this.msg);
+  },
+  destoryed:function(){
+      console.group('=====destoryed销毁完毕状态======');
+      console.log('el   :',this.$el);
+      console.log('data   :',this.$data);
+      console.log('msg   :',this.msg);
+  },
+  methods: {
+    changeMsg() {
+      this.msg = "Hello world."
+    }
+  }
+})
+</script>
+</html>

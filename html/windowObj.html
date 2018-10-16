@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box">点我</div>
+</body>
+<script type="text/javascript">
+	//alert('本条提示\n分成两行');
+	//var result = prompt('你的年龄',25);
+	//console.log('result===',result);
+	//var result = confirm('你最近好吗');
+	//console.log('result===',result);
+/*	function t() {
+			window.resizeTo(
+	  window.screen.availWidth / 2,
+	  window.screen.availHeight / 2
+		)
+	console.log(window.screen.availWidth);
+	}*/
+
+	//t();
+/*	document.getElementById('box').oncontextmenu=function(e){
+		e.preventDefault();
+		var selObj = window.getSelection();
+		console.log('selObj===',selObj.toString());
+	};*/
+	document.getElementById('box').onclick=function(e){
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState === 4){
+				if(xhr.status === 200){
+					console.log(xhr.responseText);
+				}else{
+					console.error(xhr.statusText);
+				}
+			}
+		}
+		xhr.onerror = function(e){
+			console.log('onerror===',e);
+		}
+		//progress事件的监听函数有一个事件对象参数，该对象有三个属性：
+		//loaded属性返回已经传输的数据量，
+		//total属性返回总的数据量，
+		//lengthComputable属性返回一个布尔值，表示加载的进度是否可以计算。
+		xhr.onprogress = function(e){
+			console.log(e.loaded,e.total);
+		}
+		xhr.open('GET','http://172.16.4.227:8080/im/data.json',true)
+		xhr.send(null);
+	}
+
+</script>
+</html>

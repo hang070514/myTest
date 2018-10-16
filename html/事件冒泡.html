@@ -24,19 +24,36 @@
     <div id="parent">
         <div id="child"></div>
     </div>
+    <input type="checkbox" id="my">
 </body>
 <script>
     var parent = document.getElementById('parent');
     var child = document.getElementById('child');
+    var cb = document.getElementById('my');
 
-    parent.onclick=function () {
+    cb.addEventListener('click',function(e){
+        e.preventDefault();
+    },false)
+   /* parent.onclick=function () {
         console.log('我是parent');
     }
     child.onclick=function (e) {
-        console.log('e==',e)
-        e.stopPropagation();
+        //console.log('e==',e)
+        //e.stopPropagation();
         console.log('我是child');
 
-    }
+    }*/
+
+    //true  是捕获   false  是冒泡
+    parent.addEventListener('click',function(e){
+        e.stopPropagation();
+        console.log('我是parent22');
+    },true)
+
+    child.addEventListener('click',function(e){
+        //e.stopPropagation();
+        console.log('我是child11');
+    },true)
+
 </script>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box{
+			width: 200px;
+			height: 200px;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<img src="../img/1.jpg" data-rollover="../img/2.jpg">
+	<br>
+	this is a red square <svg width="20" height="20">
+		<rect x="0" y="0" width="20" height="20" fill="red"/>
+	</svg>
+
+	this is a blue circle <svg width="20" height="20">
+		<circle cx="10" cy="10" r="10" fill="blue"/>
+	</svg>
+
+	<div class="box">
+		<webview src="https://www.baidu.com" style="width: 100%;height: 100%"></webview>
+	</div>
+</body>
+<script type="text/javascript">
+	//onLoad(function(){
+		for(var i = 0; i < document.images.length; i++){
+			var img = document.images[i];
+			var rollover = img.getAttribute('data-rollover');
+			if(!rollover){
+				continue;
+			}
+			(new Image()).src = rollover;
+			img.setAttribute('data-rollout',img.src);
+
+			img.onmouseover = function(){
+				this.src = this.getAttribute('data-rollover');
+			}
+
+			img.onmouseout = function(){
+				this.src = this.getAttribute('data-rollout');
+			}
+		}
+	//})
+</script>
+</html>

@@ -18,6 +18,24 @@
 		display: inline-block;
 		position: absolute;
 	}
+	.box{
+		width: 0px;
+		height: 0px;
+	 	border-left:50px solid transparent;
+		border-bottom: 50px solid blue;
+	 	border-right:50px solid transparent;
+	 	border-top:50px solid transparent;  
+		/* border-left: 50px solid blue;
+		border-bottom: 50px solid yellow;
+		border-right:50px solid green;
+		border-top: 50px solid red; */
+	}
+	.line{
+		box-sizing: border-box;
+		width: 100%;
+		height: 1px;
+		background-color: red;
+	}
 </style>
 <body>
 	<p>
@@ -29,6 +47,19 @@
 		<label></label>
 		<textarea placeholder="请填写您的意见或建议，您的支持是我们最大的动力！" style="margin-left:70px;height:50px;width:200px;"></textarea>
 	</p>
+
+	<div class="box">
+		
+	</div>
+
+	<form name="myForm" >
+		账号<input type="text" name="user">
+		<label for="pwd">密码</label>
+		<input type="text" name="pwd" id="pwd">
+		<label>验证码<input type="text" name="ab"></label><br/>
+		<input type="submit" value="提交">
+	</form>
+	<div class="line"></div>
 </body>
 	<script type="text/javascript">
 		/*$(function () {
@@ -48,8 +79,180 @@
 			})
         })*/
 
-		var arr = [1,2,3,4,5,6];
-		var arr1 = arr.splice(2,1);
-		console.log('arr====',arr);
+		var arr = [1,2,3,6,3,1,4,5,6];
+		//var arr1 = arr.splice(2,0,7);
+		//console.log('arr====',arr);
+
+		//var a = arr.findIndex(item=>item>8);
+		//console.log('a====',a);	
+		var arr1 = [];
+		for(var i = 0; i < arr.length; i++){
+			if(arr1.indexOf(arr[i]) == -1 ){
+				arr1.push(arr[i]);
+			}
+		}
+		//console.log(arr1);
+
+		var f = function(a,b){
+			'use strict'
+			arguments[0] = 3;
+			arguments[1] = 2;
+			return a + b;
+		}
+		var result = f(1,2);
+		//console.log(result);
+
+	/*	function f1(){
+			var  n = 1;
+			function f2(){
+				console.log('n==',n);
+			}
+			return f2;
+		}
+		//console.log('n===',n);
+		var result = f1();
+		console.log(result);*/
+		//result();
+	  
+	    function f1(){
+	    	var n = 999;  
+	    	function f2(){
+	    		console.log(n);
+	    	}
+	    	return f2;
+	    }
+	    var result = f1();	
+	    //result();
+	    //console.log(n);
+
+	    function inc(start){
+	    	return function(){
+	    		return start++;
+	    	}
+	    }
+
+	    var res = inc(5);
+	 	
+	 	//console.log(res());
+	 	//console.log(res());
+	 	//console.log(res());
+
+	 	(function (){
+	 		var a = 1;
+	 		//var b = a++;
+	 		var c = ++a;	
+	 		console.log('a==',a,c);  //2,2
+	 	})()
+
+	 	var num1 = 99;
+	 	var num2 = 100;
+	 	num1 ^= num2;
+	 	num2 ^= num1;
+	 	num1 ^= num2;
+
+	 	console.log('num1==',num1,'num2===',num2);
+
+	 	var obj = {};
+	 	var f = function(){
+	 		return this;
+	 	}
+
+	 	//console.log(f() === window);
+	 	//console.log(f.call(obj));
+
+	 	console.log(typeof f.prototype);
+
+	 	function Animal(name){
+	 		this.name = name;
+	 	}
+
+	 	Animal.prototype.color = 'white';
+
+	 	var cat1 = new Animal('大毛');
+	 	var cat2 = new Animal('二毛');
+
+	 	console.log(cat1.color);	
+	 	console.log(cat2.color);
+
+
+		var F = function () {};
+		var f4 = new F();
+	 	console.log(Object.getPrototypeOf(f4));	
+
+
+	 	var a = {};
+	 	var b = {x:1};
+
+	 	Object.setPrototypeOf(a,b);
+	 	console.log(Object.getPrototypeOf(a) === b);
+	 	console.log(a.x);
+
+	 	console.log(Object.getOwnPropertyNames(Date));
+
+/*
+	 	var items = [ 1, 2, 3, 4, 5, 6 ];
+var results = [];
+
+function async(arg, callback) {
+  console.log('参数为 ' + arg +' , 1秒后返回结果');
+  setTimeout(function () { callback(arg * 2); }, 1000);
+}
+
+function final(value) {
+  console.log('完成: ', value);
+}
+
+function series(item) {
+  if(item) {
+    async( item, function(result) {
+      console.log('result====',result);
+      results.push(result);
+      return series(items.shift());
+    });
+  } else {
+  	console.log(results);
+    return final(results[results.length - 1]);
+  }
+}
+
+series(items.shift());*/
+/*
+var items = [ 1, 2, 3, 4, 5, 6 ];
+var results = [];
+
+function async(arg, callback) {
+  console.log('参数为 ' + arg +' , 1秒后返回结果');
+  setTimeout(function () { callback(arg * 2); }, 1000);
+}
+
+function final(value) {
+  console.log('完成: ', value);
+}
+
+items.forEach(function(item) {
+  async(item, function(result){
+    results.push(result);
+    if(results.length === items.length) {
+      final(results[results.length - 1]);
+    }
+  })
+});
+*/
+var timer = setTimeout(function(){console.log('hello')},2000)
+console.log('timer====',timer);
+
+	var i = 1;
+	var j = ++i;
+	console.log(i,j);
+
+
+	var x = 1;
+	var obj = {
+		x:2,
+		y:function(){
+			console.log(this.x);
+		}
+	}
+	setTimeout(obj.y,1000);
 	</script>
 </html>

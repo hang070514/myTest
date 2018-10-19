@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div class="app">
+		<my-text>
+			<div>
+				<h2 slot="header">我是标题</h2>
+				<p>content</p>
+				<div slot="footer">链接信息</div>
+			</div>
+		</my-text>
+	</div>
+</body>
+<script type="text/javascript">
+	/*Vue.component('my-text',
+		{template:'<p>我是全局注册组件</p>'})*/
+	new Vue({
+		el:'.app',
+		data:{
+			name:'zhang'
+		},
+		components:{
+			'my-text':{
+				template:'<div>'+
+				'<p>'+
+				'<slot name="header"></slot>'+
+				'</p>'+
+				'<p><slot></slot></p>'+
+				'<p><slot name="footer"></slot></p>'
+				'</div>'
+			}
+		}
+	})
+	
+</script>
+</html>

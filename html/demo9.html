@@ -9,6 +9,35 @@
         .size1 p { font-size: 1em; }
         .size2 p { font-size: 2em; }
         .size3 p { font-size: 3em; }
+     /*    .outer{
+         display: flex;
+         width: 500px;
+         height:500px;
+         align-items: center;
+         justify-content: center;
+         border: 1px solid red;
+     }
+     .inner{
+         width: 100px;
+         height: 100px;
+         background-color: blue;
+     } */
+
+     .outer{
+         position: relative;
+         width: 500px;
+         height:500px;
+         border: 1px solid red;
+     }
+     .inner{
+         position: absolute;
+         left: 50%;
+         top:50%;
+         transform: translate(-50%,-50%);
+         width: 100px;
+         height: 100px;
+         background-color: blue;
+     }
     </style>
 </head>
 
@@ -28,6 +57,10 @@
         <p>3em大小的文字</p>
     </li>
 </ul>
+
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
 </body>
 <script type="text/javascript">
     function jie(n){

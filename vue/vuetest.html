@@ -8,7 +8,8 @@
 <body>
 	<div class="app">
 		<input type="text" v-model="msg">
-		<child-prop v-bind:message=msg></child-prop>
+		<child-prop v-bind:message="obj"></child-prop>
+		<button v-on:click="change">点我</button>
 	</div>
 </body>
 <script type="text/javascript">
@@ -19,7 +20,17 @@
 	new Vue({
 		el:'.app',
 		data:{
-			msg:123
+			msg:'hang',
+			obj:{
+				name:'zhang',
+				age:26
+			}
+		},
+		methods:{
+			change:function(){
+				this.obj.name='zhao';
+				console.log(this.obj);
+			}
 		}
 	})
 </script>

@@ -34,6 +34,7 @@
            border-right:50px solid transparent;
         }
     </style>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
 </head>
 <body>
 <!--     <div class="one">
@@ -48,5 +49,47 @@
     <div class="box">
         
     </div>
+
+    <ul>
+        <li class="li1">1</li>
+        <li class="li2">2</li>
+        <li class="li3">3</li>
+        <li class="li4">4</li>
+        <li class="li5">5</li>
+    </ul>
 </body>
+<script type="text/javascript">
+    var lis = document.getElementsByTagName('li');
+    for(var i = 0; i < lis.length; i++){
+        var index = i;
+        lis[i].onclick=function(){
+            console.log(index);
+        }
+    }
+
+    //console.log($('.box').length);
+
+ /*   for(var i = 1; i <= 5; i++){
+        console.log('i====',i);
+        $('.li'+i)[0].onclick=function(){
+            console.log(i);
+        }
+    }*/
+
+    var User = {
+        count:1,
+        getCount:function(){
+            return this.count;
+        }
+    }
+
+    //console.log(User.getCount());
+    var fun = User.getCount;
+    //console.log('fun====',fun);
+    //console.log(fun());
+
+    (function(){
+        console.log(this.num);
+    })()
+</script>
 </html>

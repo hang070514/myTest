@@ -74,6 +74,25 @@
         return result;
     }
     var res = jie(5);
-    console.log('res===',res);
+    //console.log('res===',res);
+
+    var arr = [1,2,3,4,5,6,7];
+ /*   for(var i = 0; i < arr.length; i++){
+        var randIndex = parseInt(Math.random()*arr.length);
+        var temp = arr[randIndex];
+        arr[randIndex] = arr[i];
+        arr[i] = temp;
+    }*/
+
+    function randomArr(arr){
+        for(var i = 0; i < arr.length; i++){
+        var randomNum = parseInt(Math.random()*arr.length);
+        var temp = arr[i];
+        arr[i] = arr[randomNum];
+        arr[randomNum] = temp;
+        }
+        return arr;
+    }
+    console.log('=====',randomArr(arr));
 </script>
 </html>

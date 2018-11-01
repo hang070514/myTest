@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div id="app">
+		<p v-demo:foo.a.b="message"></p>
+	</div>
+</body>
+<script>
+	Vue.directive('demo',{
+		bind:function(el,binding,vnode){
+			var s = JSON.stringify;
+			el.innerHTML = 
+			'name'+s(binding.name)+'<br/>'+
+			'value'+s(binding.value)+'<br/>'+
+			'arg'+s(binding.arg)
+		}
+	})
+	new Vue({
+		el:'#app',
+		data:{
+			message:'zhang'
+		}
+	})
+</script>
+</html>

@@ -4,21 +4,35 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style type="text/css">
-		form{
+		.outer{
 			display: flex;
 		}
-		input{
-			flex-grow: 1;
-			align-self: center;
+		.outer div{
+			width: 300px;
+			height: 100px;
+			background-color: red;
+			margin-left: 20px;
+		}
+		.outer div:nth-child(1){
+			flex-shrink:1;
+		}
+		.outer div:nth-child(2){
+			flex-shrink:2;
+		}
+		.outer div:nth-child(3){
+			flex-shrink:2;
+		}
+		.outer div:nth-child(4){
+			flex-shrink:1;
 		}
 	</style>
 </head>
 <body>
-	<form>
-		<input type="emial" >
-		<button type="submit">
-			<img src="../login.png">
-		</button>
-	</form>
+	<div class="outer">
+		<div class="box">1</div>
+		<div class="box">2</div>
+		<div class="box">3</div>
+		<div class="box">4</div>
+	</div>
 </body>
 </html>

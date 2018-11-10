@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,body{
+			height: 100%;
+			margin:0px;
+			padding:0px;
+		}
+		/* .main{
+			position: relative;
+			height: 100%;
+		}
+		.box1{
+			height: 100px;
+			background-color: red;
+		}
+		.box2{
+			position: absolute;
+			width: 100%;
+			top: 100px;
+			bottom: 0px;
+			background-color: blue;
+		} */
+
+	/* 	 .main{
+				position: relative;
+				height: 100%;
+				padding-top: 100px;
+				box-sizing: border-box;
+			}
+			.box1{
+				position: absolute;
+				top: 0px;
+				height: 100px;
+				width: 100%;
+				background-color: red;
+			}
+			.box2{
+				height: 100%;
+				background-color: blue;
+			} */
+
+		.main{
+			height: 100%;
+		}
+		.box1{
+			height: 100px;
+			background-color: red;
+		}
+		.box2{
+			height: calc(100% - 100px);
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="box1"></div>
+		<div class="box2"></div>
+	</div>
+</body>
+</html>

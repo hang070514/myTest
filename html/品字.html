@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,body{
+			height: 100%;
+			margin:0px;
+			padding: 0px;
+		}
+		.top{
+			height: 50%;
+			background-color: red;
+		}
+		.bot{
+			height: 50%;
+			overflow: hidden;
+		}
+		.left{
+			width: 50%;
+			height: 100%;
+			float: left;
+			background-color: blue;
+		}
+		.right{
+			width: 50%;
+			height: 100%;
+			float: right;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="top"></div>
+	<div class="bot">
+		<div class="left">left</div>
+		<div class="right">right</div>
+	</div>
+</body>
+<script type="text/javascript">
+	console.log(document.querySelector('.bot').innerText);
+	console.log(document.querySelector('.bot').innerHTML);
+	//document.addEventListener('keydown',keydown);
+/*	document.onkeydown=function(e){
+		console.log('e====',e.keyCode);
+	}*/
+	document.onkeypress=function(e){
+		console.log(e.keyCode);
+	}
+	/*function keydown(e){
+		console.log(e.keyCode);
+	}*/
+	//console.log(parseInt("X8X8"));
+	//console.log(parseInt("X8X8")+parseFloat("8"));
+	console.log(Number('8c'));
+	console.log(Number('98r'));
+</script>
+</html>

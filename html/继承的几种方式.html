@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+/*	//父类
+	function Person(name,age){
+		this.name = name || 'unknow'
+		this.age = age || 0
+	}
+
+	Person.prototype.say = function(){
+		console.log('i am a person');
+	}
+
+	//子类
+	function Student(name){
+		this.name = name
+		this.score = 80
+	}
+
+	//继承
+	Student.prototype = new Person();
+
+	Student.prototype.study = function(){
+		console.log('i am studing');
+	}
+	var stu = new Student('lucy');
+
+	console.log(stu.name);  //lucy  --子类覆盖父类的属性
+	console.log(stu.age);   // 0    --父类的属性
+	console.log(stu.score);  // 80   --子类自己的属性
+
+	stu.say();   // i am a person  --继承自父类的方法
+	stu.study(); // i am studing   --子类自己的方法*/
+
+	/*//父类
+	function Person(){
+		this.hobbies = ['music','reading']
+	}
+
+	//子类
+	function Student(){
+	}
+
+	//继承
+	Student.prototype = new Person();
+
+	var stu1 = new Student();
+	var stu2 = new Student();
+
+	stu1.hobbies.push('basketball');
+
+	console.log(stu1.hobbies);  // ["music", "reading", "basketball"]
+	console.log(stu2.hobbies);  //  ["music", "reading", "basketball"]*/
+
+		//父类
+	function Person(name){
+		this.hobbies = ['music','reading'];
+	}
+
+	Person.prototype.say = function(){
+		console.log('i am a person');
+	}
+	//子类
+	function Student(name){
+		Person.call(this);  //构造函数继承（继承属性）
+	}
+
+	Student.prototype = new Person();  //原型继承（继承方法）
+
+	var stu1 = new Student('lucy');
+	var stu2 = new Student('lili');
+
+	stu1.hobbies.push('basketball');
+
+	console.log(stu1.hobbies);  // ["music", "reading", "basketball"]
+	console.log(stu2.hobbies);  // ["music", "reading"]
+
+	console.log(stu1.say === stu2.say);  // true
+</script>
+</html>

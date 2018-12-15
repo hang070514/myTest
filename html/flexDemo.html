@@ -1,38 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style type="text/css">
+		/* 1、利用flex居中一个div 
+		html,body{
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.center{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}*/
+
+		/* 2、flex-direction属性决定主轴的方向。 
 		.outer{
 			display: flex;
+			flex-direction: column-reverse;
+		}*/
+
+		/* 3、flex-wrap属性决定主轴的方向。 
+		.outer{
+			display: flex;
+			flex-wrap: wrap-reverse;
 		}
 		.outer div{
-			width: 300px;
-			height: 100px;
+			width: 200px;
+			height: 200px;
 			background-color: red;
 			margin-left: 20px;
+			margin-top: 20px;
+		}*/
+
+		/* 4、justify-content属性决定项目在主轴上的对齐方式。 
+		space-between：两端对齐，项目之间的间隔都相等。
+		space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+		
+		.outer {
+			display: flex;
+			justify-content: space-around;
+		}
+		.outer div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			margin-left: 20px;
+			margin-top: 20px;
+		}
+		*/
+
+		/* 5、align-items属性定义项目在交叉轴上如何对齐。 
+		baseline: 项目的第一行文字的基线对齐。
+		
+		.outer {
+			display: flex;
+			align-items: baseline;
+		}
+		.outer div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			margin-left: 20px;
+			margin-top: 20px;
 		}
 		.outer div:nth-child(1){
-			flex-shrink:1;
+			padding-top: 30px;
 		}
 		.outer div:nth-child(2){
-			flex-shrink:2;
+
 		}
 		.outer div:nth-child(3){
-			flex-shrink:2;
+
 		}
-		.outer div:nth-child(4){
+		*/
+
+		/* 6、order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。 
+		.outer {
+			display: flex;
+		}
+		.outer div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			margin-left: 20px;
+			margin-top: 20px;
+		}
+		.outer div:nth-child(1){
+			order: 1;
+		}
+		.outer div:nth-child(2){
+			order: 0;
+		}
+		.outer div:nth-child(3){
+			order: 5;
+		}
+		*/
+
+	/* 7、flex-grow属性定义项目的放大比例，默认为0 
+		.outer {
+			display: flex;
+		}
+		.outer div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			margin-left: 20px;
+			margin-top: 20px;
+		}
+		.outer div:nth-child(1){
+			flex-grow: 1;
+		}
+		.outer div:nth-child(2){
+			flex-grow: 2;
+		}
+		.outer div:nth-child(3){
+			flex-grow: 1;
+		}
+		*/
+
+		/* 8、flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。 */
+		.outer {
+			display: flex;
+		}
+		.outer div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
 			flex-shrink:1;
+			margin-left: 20px;
+			margin-top: 20px;
 		}
+		.outer div:nth-child(3){
+			flex-shrink: 3;
+		}
+
+
 	</style>
 </head>
+
 <body>
+	<!-- <div class="center"></div> -->
 	<div class="outer">
 		<div class="box">1</div>
 		<div class="box">2</div>
 		<div class="box">3</div>
 		<div class="box">4</div>
+		<div class="box">5</div>
+		<div class="box">6</div>
+		<div class="box">7</div>
+		<div class="box">8</div>
+		<div class="box">9</div>
+		<div class="box">10</div>
 	</div>
 </body>
+
 </html>

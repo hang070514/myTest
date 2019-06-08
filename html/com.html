@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<OBJECT ID="MSComm1" WIDTH=100 HEIGHT=51 type="application/x-oleobject"
+        CLASSID="CLSID:648A5600-2C6E-101B-82B6-000000000014"
+        CODEBASE="MSCOMM32.OCX">
+    <PARAM NAME="_ExtentX" VALUE="2646">
+    <PARAM NAME="_ExtentY" VALUE="1323">
+    <PARAM NAME="_Version" VALUE="393216">
+    <PARAM NAME="DTREnable" VALUE="-1">
+    <PARAM NAME="RThreshold" VALUE="1">
+    <PARAM NAME="RTSEnable" VALUE="-1">
+</OBJECT>
+<span id="open">打开串口</span>
+<span>关闭串口</span>
+</body>
+<script>
+   // var tcom = new ActiveXObject('TComm.mComm');
+    //console.log('tcom======',tcom);
+    //var f1 = tcom.CreateTextFile('d://testfile.txt',true);
+    ConfigPort();
+    //配置串口
+    function ConfigPort(){
+        console.log('MSComm1.PortOpen=====',MSComm1.PortOpen);
+        if(MSComm1.PortOpen==false){
+            try{
+                MSComm1.CommPort=1;//"1"代表com1口;
+                MSComm1.Settings="9600,n,8,1";       //定义本属性
+                MSComm1.OutBufferCount =0;           //清空发送缓冲区
+                MSComm1.InBufferCount = 0;           //滑空接收缓冲区
+
+            }catch(ex){
+                console.log(ex.message);
+            }
+        }else{
+            console.log("请先关闭串口后再设置！");
+        }
+    }
+    //打开串口
+    function OperatePort(){
+        if(MSComm1.PortOpen==true){
+            try{
+                MSComm1.PortOpen=false;
+            }catch(ex){
+                console.log(ex.message);
+            }
+        }else{
+            try{
+                MSComm1.PortOpen=true;
+            }catch(ex){
+                console.log(ex.message);
+            }
+        }
+    }
+    document.getElementById('open').click=function () {
+        OperatePort();
+    }
+</script>
+</html>

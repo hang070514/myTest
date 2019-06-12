@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        {{parentMsg}}
+        <child v-on:handle="handParentMsg"></child>
+    </div>
+</body>
+<script>
+    Vue.component('child',{
+        template:'<span @click="handChildMsg">send</span>',
+        methods:{
+            handChildMsg:function(){
+                this.$emit('handle','子组件传的信息')
+            }
+        }
+    })
+    new Vue({
+        el:'#app',
+        data:{
+            parentMsg:''
+        },
+        methods:{
+            handParentMsg:function (data) {
+                this.parentMsg = data;
+            }
+        }
+    })
+</script>
+</html>

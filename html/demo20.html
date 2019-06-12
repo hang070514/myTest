@@ -31,5 +31,22 @@
             }
         }
     })
+
+    function deepCopy(obj){
+        var objClone = Array.isArray(obj) ? [] : {};
+        if(obj && typeof obj === 'object'){
+            for(key in obj){
+                if(obj.hasOwnProperty(key)){
+                    //判断obj的属性值是否是对象，如果是则递归
+                    if(obj[key] && typeof obj[key] === 'object'){
+                        objClone[key] = deepClone(obj[key]);
+                    }else{
+                        objClone[key] = obj[key]
+                    }
+                }
+            }
+        }
+        return objClone;
+    }
 </script>
 </html>

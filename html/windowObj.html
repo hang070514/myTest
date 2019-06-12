@@ -51,6 +51,76 @@
 		xhr.open('GET','http://172.16.4.227:8080/im/data.json',true)
 		xhr.send(null);
 	}
+	for(var i = 0; i < 5; i++){
+		setTimeout((function () {
+			console.log(i);
+        })(i),2000)
+	}
+	let arr = [1,2,3,3,3,7];
+	let set = new Set(arr);
+	console.log(set);
 
+    var str = 'zhang';
+   // console.log(typeof str === 'string');
+    //console.log(str.constructor === String);
+    //console.log(typeof(str) === 'string');
+    //console.log(Object.prototype.toString.call(arr));
+    //console.log('4'===4);
+    //console.log('8'==8);
+    let person1 = {
+        age:20
+    }
+    let person2 = {
+        age:20
+    }
+
+    //console.log(person1 === person2);
+    var a = 9;
+    var a = 10;
+    console.log(a);
+
+
+    var foo = {
+        name:'zhang'
+    }
+    var name = 'wang';
+    function bar(job,age) {
+        console.log(this.name);
+        console.log(job,age);
+    }
+    bar('hello',28);
+    bar.call(foo,'world',30);
+
+    const sym = Symbol('li');
+    console.log(sym);
+
+    var str = 'hello';
+    console.log([...str]);
+    var arr1 = ['a','b','c'];
+    console.log(arr1);
+    console.log(...arr1);
+
+    var arrs = ['a','b','c','d','e'];
+    for(let a in arrs){
+        if(a==3){
+           break;
+        }
+        console.log(a);
+    }
+    for(let a of arrs){
+        if(a == 'c'){
+            break;
+        }
+        console.log(a);
+    }
+
+    var engines = new Set(["Gecko", "Trident", "Webkit", "Webkit"]);
+    for (var e of engines) {
+        //console.log(e);
+    }
+
+    for(var e in engines){
+        console.log(e);
+    }
 </script>
 </html>

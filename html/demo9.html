@@ -3,96 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        body { font-size: 10px; }
-        h1 { font-size: 16px; }
-        .size1 p { font-size: 1em; }
-        .size2 p { font-size: 2em; }
-        .size3 p { font-size: 3em; }
-     /*    .outer{
-         display: flex;
-         width: 500px;
-         height:500px;
-         align-items: center;
-         justify-content: center;
-         border: 1px solid red;
-     }
-     .inner{
-         width: 100px;
-         height: 100px;
-         background-color: blue;
-     } */
-
-     .outer{
-         position: relative;
-         width: 500px;
-         height:500px;
-         border: 1px solid red;
-     }
-     .inner{
-         position: absolute;
-         left: 50%;
-         top:50%;
-         transform: translate(-50%,-50%);
-         width: 100px;
-         height: 100px;
-         background-color: blue;
-     }
-    </style>
 </head>
 
 <body>
-<h1>假定当前默认字体尺寸是14px，n em即为14px字体尺寸的n倍：</h1>
-<ul>
-    <li class="size1">
-        <strong>1em</strong>:
-        <p>1em大小的文字</p>
-    </li>
-    <li class="size2">
-        <strong>2em</strong>:
-        <p>2em大小的文字</p>
-    </li>
-    <li class="size3">
-        <strong>3em</strong>:
-        <p>3em大小的文字</p>
-    </li>
-</ul>
 
-    <div class="outer">
-        <div class="inner"></div>
-    </div>
 </body>
 <script type="text/javascript">
-    function jie(n){
-        var result;
-        if(n > 1){
-            result = n * jie(n-1);
-            n--;
-        }else{
-            return 1;
-        }
-        return result;
-    }
-    var res = jie(5);
-    //console.log('res===',res);
 
-    var arr = [1,2,3,4,5,6,7];
- /*   for(var i = 0; i < arr.length; i++){
-        var randIndex = parseInt(Math.random()*arr.length);
-        var temp = arr[randIndex];
-        arr[randIndex] = arr[i];
-        arr[i] = temp;
-    }*/
-
-    function randomArr(arr){
-        for(var i = 0; i < arr.length; i++){
-        var randomNum = parseInt(Math.random()*arr.length);
-        var temp = arr[i];
-        arr[i] = arr[randomNum];
-        arr[randomNum] = temp;
-        }
-        return arr;
-    }
-    console.log('=====',randomArr(arr));
 </script>
 </html>

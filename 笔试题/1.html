@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+   /* (function () {
+        var a = b = 5;
+    })()
+    console.log(b);  //5
+    console.log(a);  // a is not defined*/
+
+/*   var a = 10;
+   function fn() {
+       console.log(a);
+   }
+   function bar(f) {
+       var a = 20;
+       f();
+   }
+   bar(fn);*/
+
+    function fn(a) {
+        console.log(a);
+        var a = 2;
+        function a() {
+
+        }
+        console.log(a);
+    }
+    fn(1);
+</script>
+</html>

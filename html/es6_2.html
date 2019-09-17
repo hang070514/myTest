@@ -17,29 +17,46 @@
 		},1000)
 	}*/
 
-/*	for(let i = 1; i <= 5; i++){
+	for(let i = 1; i <= 5; i++){
 		(function(){
 			setTimeout(function(){
 				console.log(i);
 			},1000)
 		})(i)
-	}*/
-	//console.log(test);
-	var test = 1;
-	//console.log(test);
-	function test(index){
-	    console.log(index);
-	    index = 3;
 	}
-	//test(2)
-	var a = 10;
-	a.pro = 10;
-	console.log(a.pro);
-	console.log(a.pro+a);
 
-	var b = 'hello';
-	b.pro = 'world';
-	console.log(b.pro);
-	console.log(b.pro+b);
+	function deepClone(obj){
+	    let objClone = Array.isArray(obj) ? [] : {};
+	    if(obj && typeof obj == 'object'){
+	        for(key in obj){
+	            if(obj.hasOwnProperty(key)){
+	                //判断obj子元素是否为对象，如果是  递归复制
+					if(obj[key] && typeof obj[key] === 'object'){
+					    objClone[key] = deepClone(obj[key]);
+					}else{
+					    objClone[key] = obj[key];
+					}
+				}
+			}
+		}
+		return objClone;
+	}
+
+	function deep(obj) {
+		var objClone = Array.isArray(obj) ? [] : {};
+		if(obj && typeof obj === 'object'){
+            for(key in obj){
+                if(obj.hasOwnProperty(key)){
+                    //判断对象的属性是否也是一个对象
+					if(obj[key] && typeof obj[key] === 'object'){
+					    objClone[key] = deep(obj[key]);
+					}else{
+					    objClone[key] = obj[k];
+					}
+                }
+            }
+		}
+		return objClone;
+    }
 </script>
 </html>

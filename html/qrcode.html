@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="../js/vue-qr.js"></script>-->
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/qrcode.js"></script>
+    <!--<script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>-->
+    <!--<script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>-->
+    <!--<script type="text/javascript" src="../js/jquery.qrcode.js"></script>-->
+    <!--<script type="text/javascript" src="../js/qrcode.js"></script>-->
+</head>
+<body>
+<!--<vue-qr  text="Hello world!dsjsdlfsdsdfadasdasfafdsadfsadfdsafsdafdsafdsfdsfds" :size="200"></vue-qr>-->
+<div id="qrcode"></div>
+</body>
+<script>
+    /*jQuery('#qrcode').qrcode("this plugin is great");
+    jQuery('#qrcode').qrcode({
+        text: "http://jetienne.com"
+    });*/
+    /*document.getElementById("qrcode").qrcode("this plugin is great");*/
+   $(function () {
+
+        //实例化二维码并调整二维码大小
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            width: 180,
+            height: 180,
+            //correctLevel: QRCode.QRErrorCorrectLevel.L
+        });
+
+        //生成二维码
+        function makeCode() {
+            //qrcode.clear();
+            qrcode.make("https://blog.csdn.net/ianly123");
+        };
+
+        //调用生成二维码方法
+        makeCode();
+    })
+/*    import VueQr from '../js/vue-qr.js'
+    export default {
+        components:{
+            VueQr
+        },
+    }*/
+</script>
+</html>

@@ -15,7 +15,7 @@
     Vue.component('myComponent',{
         template:'<div>' +
         '<input v-model="message"/>'+
-        '<button v-on:click="handMessage">send</button>'+
+        '<button @click="handMessage">send</button>'+
         '</div>',
         data:function () {
             return {

@@ -4,19 +4,35 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    html,body{
+        height: 100%;
+    }
+    .outer{
+        width: 100%;
+        height: 100%;
+    }
+
+    .box1{
+        width: 100%;
+        height: 100px;
+        background: red;
+    }
+    .box2{
+        height:calc(100% - 100px);
+        width: 100%;
+        background: blue;
+    }
+</style>
 <body>
-<OBJECT ID="MSComm1" WIDTH=100 HEIGHT=51 type="application/x-oleobject"
-        CLASSID="CLSID:648A5600-2C6E-101B-82B6-000000000014"
-        CODEBASE="MSCOMM32.OCX">
-    <PARAM NAME="_ExtentX" VALUE="2646">
-    <PARAM NAME="_ExtentY" VALUE="1323">
-    <PARAM NAME="_Version" VALUE="393216">
-    <PARAM NAME="DTREnable" VALUE="-1">
-    <PARAM NAME="RThreshold" VALUE="1">
-    <PARAM NAME="RTSEnable" VALUE="-1">
-</OBJECT>
-<span id="open">打开串口</span>
-<span>关闭串口</span>
+<div class="outer">
+    <div class="box1"></div>
+    <div class="box2"></div>
+</div>
 </body>
 <script>
    // var tcom = new ActiveXObject('TComm.mComm');

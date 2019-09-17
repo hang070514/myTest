@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+   // 'use strict'
+    var obj = {
+        name:'zhang',
+        age:27,
+        mFun:function () {
+            console.log(this.name + '的年龄' + this.age);
+        }
+    }
+    //obj.mFun();
+    var obj1 = {
+        name: 'wang',
+        age:30
+    }
+    //obj.mFun.call(obj1);
+
+    var name = 1;
+    var obj = {
+        name:2,
+        prop: {
+            name:3,
+            getName: function() {
+                return this.name;
+            }
+        }
+    }
+
+    console.log(obj.prop.getName());
+    console.log(obj.prop.getName.call(obj));
+    console.log(obj.prop.getName.call(undefined));
+
+    var color = "red";
+    function displayColor(){
+        alert(this.color);
+    }
+    displayColor.call(null);
+</script>
+</html>

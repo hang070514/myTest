@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var arr = [
+        {name:'li',age:20,sex:'women'},
+        {name:'zhang',age:20,sex:'men'},
+        {name:'wang',age:27,sex:'men'}
+    ]
+/*    arr.forEach((item,index) => {
+        if(item.sex == 'men'){
+            //arr.splice(index,1);
+            console.log('index=====',index);
+        }
+    })*/
+/*    for(let i = 0; i < arr.length; i++){
+        if(arr[i].sex == 'men'){
+            arr.splice(i,1);
+            console.log('index=====',i);
+        }
+    }*/
+ /*   for(let i = 0; i < arr.length; i++){
+        if(arr[i].sex == 'men'){
+            arr.splice(i,1);
+            console.log('index=====',i);
+        }
+    }*/
+
+    arr.forEach((item)=>{
+        if(item.sex == 'men'){
+            item.age = 44
+        }
+        console.log('item=====',item);
+    })
+    console.log('arr=====',arr);
+</script>
+</html>

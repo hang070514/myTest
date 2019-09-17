@@ -9,7 +9,7 @@
 	<div class="app">
 		<input type="text" v-model="msg">
 		<child-prop v-bind:message="obj"></child-prop>
-		<button v-on:click="change">点我</button>
+		<button @click="change">点我</button>
 	</div>
 </body>
 <script type="text/javascript">

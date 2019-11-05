@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js浮点数计算不准确</title>
+</head>
+<body>
+
+</body>
+<script>
+    /**
+     * 判断是否为整数
+     */
+    function isInteger(num){
+        return Math.floor(num) === num;
+    }
+
+    function f(num) {
+        if(isInteger(num)){
+            return;
+        }
+        let ret = {
+            time:1,int:0
+        }
+        let strNum = num.toString();
+        //获取小数位置
+        let dotPos = strNum.indexOf('.');
+        //获取小数位数
+        let len = strNum.substring(dotPos+1).length;
+        //计算扩大的倍数
+        let times = Math.pow(10,len);
+        let intNum = parseInt(num * times);
+        ret.time = times;
+        ret.int = intNum;
+        return ret;
+    }
+    function ji(num1,num2,op){
+        let ret1 = f(num1);
+        let ret2 = f(num2);
+
+        let t1 = ret1.time;
+        let t2 = ret2.time;
+        let int1 = ret1.int;
+        let int2 = ret2.int;
+        let max = t1 > t2 ? t1 : t2;
+        let res;
+        switch (op) {
+            case 'add':
+                if(t1 == t2){
+                    res = int1+ int2;
+                }else if(t1 > t2){
+                    res = int1 + int2 * (t1/t2);
+                }else{
+                    res = int1 * (t2/t1) + int2;
+                }
+                return res/max;
+                break;
+            case 'jian':
+                if(t1 == t2){
+                    res = int1 - int2;
+                }else if(t1 > t2){
+                    res = int1 - int2 * (t1/t2);
+                }else{
+                    res = int1 * (t2/t1) - int2;
+                }
+                return res/max;
+                break;
+            case 'cheng':
+                res = (int1 * int2)/(t1 * t2);
+                return res;
+                break;
+            case 'chu':
+                res = (int1 / int2)/(t1 / t2);
+                return res;
+                break
+        }
+    }
+
+    console.log(ji(1.4,1.22,'cheng'));
+</script>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+/*    function render(){
+        console.log('模拟视图渲染');
+    }
+    let data = {
+        name:'zhanghang',
+        location:{x:100,y:100}
+    }
+    observe(data)
+    function observe(obj){
+        if(!obj || typeof obj !== 'object'){
+            return;
+        }
+
+        Object.keys(obj).forEach(key => {
+            defineReactive(obj,key,obj[key])
+        })
+
+        function defineReactive(obj,key,value){
+            observe(value)
+            Object.defineProperty(obj,key,{
+                enumerable:true,
+                configurable:true,
+                get:function reactiveGetter(){
+                    console.log('get',value);
+                    return value;
+                },
+                set:function reactiveGetter(newValue){
+                    observe(newValue)
+                    if(newValue !== value){
+                        console.log('set',newValue);
+                        render();
+                        value = newValue;
+                    }
+                }
+            })
+        }
+    }*/
+
+    function render(){
+        console.log('模拟视图的更新');
+    }
+
+    let obj = {
+        name: 'zhang',
+        age: {age: 30},
+        arr: [1, 2, 3]
+    }
+    let handler = {
+        get(target,key){
+            if(typeof target[key] == 'object' && target[key] !== null){
+                return new Proxy(target[key],handler)
+            }
+            return Reflect.get(target,key)
+        },
+        set(target,key,value){
+            if(key === 'length'){
+                return true
+            }
+            render()
+            return Reflect.set(target,key,value)
+        }
+    }
+    let proxy = new Proxy(obj,handler);
+    proxy.arr[0] = 'zhang';
+    console.log(proxy.arr);
+</script>
+</html>

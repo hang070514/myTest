@@ -1,0 +1,231 @@
+span{
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+    color: #333;
+    background: #ccc;
+    min-width: 80px;
+    padding: 0 10px;
+    margin: 10px;
+}
+
+.ech-big,.ech-small{
+    transition: all .4s;
+}
+.ech-big:hover{
+    transform: scale(1.2);
+}
+.ech-small:hover{
+    transform: scale(.9);
+}
+.ech-grow-rotate-l,.ech-grow-rotate-r,.ech-rotate5,.ech-rotate30,
+.ech-rotate90,.ech-rotate180,.ech-rotate360{
+    transition: all .4s;
+}
+.ech-grow-rotate-l:hover{
+    transform: scale(1.1) rotate(4deg);
+}
+.ech-grow-rotate-r:hover{
+    transform: scale(1.1) rotate(-4deg);
+}
+.ech-rotate5:hover{
+    transform: rotate(-5deg);
+}
+.ech-rotate30:hover{
+    transform: rotate(-30deg);
+}
+.ech-rotate90:hover{
+    transform: rotate(-90deg);
+}
+.ech-rotate180:hover{
+    transform: rotate(-180deg);
+}
+.ech-rotate360:hover{
+    transform: rotate(-360deg);
+}
+.ech-t,ech-b,.ech-l,.ech-r{
+    transition: all .4s;
+}
+.ech-t:hover{
+     transform: translateY(-10px);
+}
+.ech-b:hover{
+    transform: translateY(10px);
+}
+.ech-l:hover{
+    transform: translateX(-10px);
+}
+.ech-r:hover{
+    transform: translateX(10px);
+}
+.ech-fade-out{
+    transition:all .4s;
+}
+.ech-fade-out:hover{
+    opacity: .6;
+}
+.ech-fade,.ech-fade-t,.ech-fade-b,.ech-fade-l,.ech-fade-r
+,.ech-fade-c-out,.ech-fade-c-in,.ech-fade-m-out,.ech-fade-m-in{
+    position: relative;
+    transition: all .3s;
+    z-index: 1;
+}
+.ech-fade:before,.ech-fade-t:before,.ech-fade-b:before,.ech-fade-l:before,
+.ech-fade-r:before,.ech-fade-c-out:before,.ech-fade-c-in:before,.ech-fade-c-in:after,
+.ech-fade-m-out:before,.ech-fade-m-in:before,.ech-fade-m-in:after{
+    position: absolute;
+    transition: all .3s;
+    content:'';
+    display: block;
+    background: #09f;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+.ech-fade:before{
+    top:0;
+    left:0;
+    transform: scaleX(1);
+    opacity: 0;
+}
+.ech-fade:hover:before{
+    opacity: 1;
+}
+/**
+颜色从上往下变化
+ */
+.ech-fade-t:before{
+    bottom: 0;
+    left: 0;
+    transform-origin: 50% 0;
+    transform: scaleY(0);
+}
+
+/*颜色从下往上变化*/
+.ech-fade-b:before{
+    top: 0;
+    left: 0;
+    transform-origin: 50% 100%;
+    transform: scaleY(0);
+}
+.ech-fade-t:hover:before,.ech-fade-b:hover:before{
+    transform: scaleY(1);
+}
+/*颜色从左至右变化*/
+.ech-fade-l:before{
+    top: 0;
+    right: 0;
+    transform-origin: 0 100%;
+    transform: scaleX(0);
+}
+/*颜色从右至左变化*/
+.ech-fade-r:before{
+    top: 0;
+    left: 0;
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+}
+.ech-fade-l:hover:before,.ech-fade-r:hover:before{
+    transform: scaleX(1);
+}
+
+/*水平居中出去*/
+.ech-fade-c-out:before{
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    transform: scaleX(0);
+}
+.ech-fade-c-out:hover:before{
+    transform: scaleX(1);
+}
+
+    /*水平居中进来*/
+.ech-fade-c-in:before{
+    top:0;
+    left:0;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+}
+.ech-fade-c-in:after{
+    top:0;
+    right:0;
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+}
+.ech-fade-c-in:hover:before, .ech-fade-c-in:hover:after {
+    transform: scaleX(.51);
+}
+/*垂直居中出去*/
+.ech-fade-m-out:before{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    transform: scaleY(0);
+}
+.ech-fade-m-out:hover:before{
+    transform: scaleY(1);
+}
+/*垂直居中进来*/
+.ech-fade-m-in:before {
+    top: 0;
+    left: 0;
+    transform-origin: 50% 0;
+    transform: scaleY(0);
+}
+
+.ech-fade-m-in:after {
+    bottom: 0;
+    left: 0;
+    transform-origin: 50% 100%;
+    transform: scaleY(0);
+}
+
+.ech-fade-m-in:hover:before, .ech-fade-m-in:hover:after {
+    transform: scaleY(.51);
+}
+
+/*仿闹钟振铃效果*/
+.ech-shake-time:hover {
+    animation: shake-time 1s ease;
+}
+
+@keyframes shake-time {
+    0%{
+        transform: scale(1);
+    }
+    10%,20%{
+        transform: scale(0.9) rotate(-3deg);
+    }
+    30%,50%,70%,90%{
+        transform: scale(1.1) rotate(3deg);
+    }
+    40%,60%,80%{
+        transform: scale(1.1) rotate(-3deg);
+    }
+    100%{
+        transform: scale(1) rotate(0);
+    }
+}
+
+/*弹跳变化*/
+.ech-bounce:hover {
+    animation: bounce 1s ease;
+}
+@keyframes bounce {
+   0%, 20%, 50%, 80%, 100%{
+       transform: translateY(0);
+   }
+    40%{
+        transform: translateY(-30px);
+    }
+    60%{
+        transform: translateY(-15px);
+    }
+}

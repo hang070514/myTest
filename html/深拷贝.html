@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function deepClone(obj) {
+        let objClone = Array.isArray(obj) ? [] : {};
+        if(obj && typeof obj === 'object'){
+            for(key in obj){
+                if(obj.hasOwnProperty(key)){
+                    if(obj[key] && typeof obj[key] === 'object'){
+                        objClone[key] = deepClone(obj[key])
+                    }else{
+                        objClone[key] = obj[key]
+                    }
+                }
+            }
+        }
+        return objClone;
+    }
+
+
+    function clone(obj){
+        let objClone = Array.isArray(obj) ? [] : {};
+        if(obj && typeof obj == 'object'){
+            for(key in obj){
+                if(obj.hasOwnProperty(key)){
+                    //如果对象的属性还是一个对象 则递归调用
+                    if(obj[key] && typeof obj[key] == 'object'){
+                        objClone[key] = clone(obj[key])
+                    }else{
+                        objClone[key] = obj[key]
+                    }
+                }
+            }
+        }
+        return objClone;
+    }
+
+
+
+    function copys(obj){
+        var cloneObj = Array.isArray(obj) ? [] : {};
+        if(obj && typeof obj == 'object'){
+            for(var key in obj){
+                if(obj.hasOwnProperty(key)){
+                    if(obj[key] && typeof obj[key] == 'object'){
+                        cloneObj[key] = copys(obj[key])
+                    }else{
+                        cloneObj[key] = obj[key]
+                    }
+                }
+            }
+        }
+        return cloneObj;
+    }
+
+
+    var a = {
+        name:'zhang',
+        age:20,
+        child:{
+            sex:'boy'
+        }
+    }
+    var b = clone(a);
+    b.child.sex = 'girl';
+
+    //console.log(a);
+    //console.log(b);
+
+    let address = 'http://mtest.picclife.cn/ucsp/#/service-index?source=ecust';
+    var path = address.split('/#')[1] && address.split('/#')[1].split('?')[0];
+    alert(path);
+</script>
+</html>

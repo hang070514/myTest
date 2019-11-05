@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .v-enter,.v-leave-to{
+            /*opacity: 0;*/
+            transform: translateX(50px);
+        }
+        .v-enter-to,.v-leave{
+           /* opacity: 0.4;*/
+            transform: translateX(0);
+        }
+        .v-enter-active,.v-leave-active{
+            transition: all 3s ease;
+        }
+        .moveR-enter-active{
+            transition: all 3s linear;
+        }
+        .moveR-enter {
+            transform: translateY(0);
+        }
+        .moveR-enter-to{
+            transform: translateY(100px);
+        }
+        .content{
+            width: 100%;
+            height: 100%;
+        }
+        .active{
+            transform: translateY(50px);
+            transition: transform 1s linear;
+        }
+        .active1{
+            transform: translateY(0px);
+            transition: transform 1s linear;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <input type="button" value="按钮" @click="toggle">
+<!--    <transition name="moveR">
+        <div class="content" :class="{active :isActive,active1 :!isActive}">这是内容</div>
+    </transition>-->
+    <transition name="moveR">
+        <div>这是内容</div>
+    </transition>
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            isActive:false
+        },
+        methods:{
+            cli:function () {
+                this.obj = Object.assign({},this.obj,{
+                    age:29,
+                    gender:'women'
+                })
+                console.log(this.obj);
+            },
+            toggle(){
+                this.isActive = !this.isActive ;
+            }
+        }
+    })
+
+
+</script>
+</html>

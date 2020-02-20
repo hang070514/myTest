@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{
+            display: block;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            background: #cccccc;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .ech1,.ech2,.ech3,.ech4,.ech5{
+            transition: all .4s;
+        }
+        .ech6,.ech7,.ech8,.ech9{
+            position: relative;
+            transition: all .4s;
+            z-index: 1;
+        }
+        .ech1:hover{
+            transform: scale(1.2);
+        }
+        .ech2:hover{
+            transform: scale(0.8);
+        }
+        .ech3:hover{
+              transform: rotate(180deg);
+        }
+        .ech4:hover{
+            transform: translateY(-15px);
+        }
+        .ech5:hover{
+            transform: translateX(15px);
+        }
+        .ech6:before{
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            content: '';
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #0099ff;
+            opacity: 0;
+            transition: all .4s;
+        }
+        .ech6:hover:before{
+            opacity: 1;
+        }
+        .ech7:before{
+            position: absolute;
+            left: 0;
+            right: 0;
+            display: block;
+            content: '';
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #0099ff;
+            transition: all .4s;
+            transform-origin: 100% 0;
+            transform: scaleX(0);
+        }
+        .ech7:hover:before{
+            transform: scaleX(1);
+        }
+        .ech8:before{
+            position: absolute;
+            left: 0;
+            right: 0;
+            display: block;
+            content: '';
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #0099ff;
+            transition: all .4s;
+            transform-origin: 0 50%;
+            transform: scaleY(0);
+        }
+        .ech8:hover:before{
+            transform: scaleY(1);
+        }
+        .ech9:before{
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            content: '';
+            width: 100%;
+            height: 50%;
+            transform: scaleY(0);
+            transform-origin: 0 0;
+            transition: all .4s;
+            z-index: -1;
+            background: #0099ff;
+        }
+        .ech9:after{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            display: block;
+            content: '';
+            width: 100%;
+            height: 50%;
+            transform: scaleY(0);
+            transform-origin: 0 100%;
+            transition: all .4s;
+            z-index: -1;
+            background: #0099ff;
+        }
+        .ech9:hover:before,.ech9:hover:after{
+            transform: scaleY(1);
+        }
+    </style>
+</head>
+<body>
+    <span class="ech1">big</span>
+    <span class="ech2">small</span>
+    <span class="ech3">rorate</span>
+    <span class="ech4">up</span>
+    <span class="ech5">right</span>
+    <span class="ech6">fade</span>
+    <span class="ech7">fade-t</span>
+    <span class="ech8">in-t</span>
+    <span class="ech9">out-t</span>
+</body>
+</html>

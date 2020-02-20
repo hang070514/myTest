@@ -9,17 +9,51 @@
 </body>
 <script src="../js/jquery.js"></script>
 <script>
-    function deepClone(obj){
-        var objClone = Array.isArray(obj) ? [] : {}
-        for(key in obj){
-            if(obj.hasOwnProperty(key)){
-                if(typeof obj[key] === 'object'){
-                    objClone[key] = deepClone(obj[key])
-                }else{
-                    objClone[key] = obj[key]
+    function clone(obj){
+        var cloneObj = Array.isArray(obj) ? [] : {};
+        if(obj && typeof obj === 'object'){
+            for(key in obj){
+                if(obj.hasOwnProperty(key)){
+                    //如果对象的属性还是对象  则递归调用
+                    if(obj[key] && typeof obj[key] === 'object'){
+                        cloneObj[key] = clone(obj[key])
+                    }else{
+                        cloneObj[key] = obj[key]
+                    }
                 }
             }
         }
+        return cloneObj;
     }
+
+    var obj = {
+        name:'zhang',
+        say:function(){
+            console.log('hi');
+        },
+        a:undefined,
+        b:{c:'hello'}
+    }
+/*    var obj2 = {...obj};
+    obj.b.c = 'world'
+    console.log(obj.b.c);  //world
+    console.log(obj2.b.c); //world
+    console.log(obj === obj2); //true*/
+
+  /*  var obj2 = JSON.parse(JSON.stringify(obj))
+    obj2.b.c = 'world'
+    console.log(obj.b.c);  //hello
+    console.log(obj2.b.c); //world
+    console.log(obj === obj2); //false
+    console.log(obj);
+    console.log(obj2);*/
+
+    var obj2 = clone(obj);
+    obj2.b.c = 'world'
+    console.log(obj.b.c);
+    console.log(obj2.b.c);
+    console.log(obj === obj2);
+    console.log(obj);
+    console.log(obj2);
 </script>
 </html>

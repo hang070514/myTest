@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        class NameForm extends React.Component{
+            constructor(props){
+                super(props);
+                //this.state = {value:'请写一篇关于你喜欢的文章'};
+                this.state = {value:'account'};
+
+                this.handleChange = this.handleChange.bind(this);
+                this.handleSubmit = this.handleSubmit.bind(this);
+            }
+
+            handleChange(event){
+                this.setState({value:event.target.value})
+            }
+
+            handleSubmit(event){
+                //alert('提交的文章：'+this.state.value);
+                alert('你喜欢的风味：'+this.state.value);
+                event.preventDefault();
+            }
+
+            render(){
+                return (
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                           选择你喜欢的风味：
+                            <select value={this.state.value} onChange={this.handleChange}>
+                                <option value="grapefruit">葡萄</option>
+                                <option value="lime">酸橙</option>
+                                <option value="coconut">椰子</option>
+                                <option value="mango">芒果</option>
+                            </select>
+                        </label>
+                        <input type="submit" value="提交"/>
+                    </form>
+                )
+            }
+        }
+        ReactDOM.render(
+            <NameForm/>,
+            document.getElementById('example')
+        )
+    </script>
+</body>
+</html>

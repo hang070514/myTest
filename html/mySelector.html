@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mySelector</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            border:1px solid deepskyblue;
+        }
+        li{
+            list-style: none;
+            cursor: pointer;
+        }
+        li:hover{
+            color: #fff;
+            background: #0099ff;
+        }
+        .main{
+            position: relative;
+            width: 100%;
+            height: 50px;
+        }
+        .mlabel{
+            width: 10%;
+            height: 100%;
+            line-height: 50px;
+            text-align: center;
+        }
+        .mlabel span{
+
+        }
+        .xia{
+            display:none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 90%;
+        }
+        .arrows{
+            position: absolute;
+            top: 50%;
+            right: 2%;
+            transform: translateY(-7.5px) rotate(45deg);
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border: 1px solid #C8C8CD;
+            border-width: 1px 1px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="mlabel">
+            <span>地区:</span>
+        </div>
+        <div class="xia">
+            <ul>
+                <li>北京</li>
+                <li>上海</li>
+                <li>广州</li>
+                <li>深圳</li>
+            </ul>
+        </div>
+        <span class="arrows"></span>
+    </div>
+</body>
+<script>
+    var area = ['北京','上海','广州','深圳']
+    var obj = {
+        name:'zhang',
+        age:28
+    }
+    var main = document.querySelector('.main');
+    var xia = document.querySelector('.xia');
+    document.onclick = function(){
+        if(getComputedStyle(xia,null).display == 'block'){
+            xia.style.display = 'none';
+        }
+    }
+    main.onclick = function (e) {
+        //阻止事件冒泡
+        e.stopPropagation();
+        //显示或隐藏下拉框
+        if(getComputedStyle(xia,null).display == 'none'){
+            xia.style.display = 'block';
+        }else{
+            xia.style.display = 'none';
+        }
+    }
+
+    console.log(this);
+    var that = this;
+    obj.forEach(function (item) {
+        console.log(item);
+        console.log(this === that);
+    })
+</script>
+</html>

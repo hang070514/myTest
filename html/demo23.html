@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{
+            margin-top: 15px;
+        }
+        .span1,.bot,.top,.left,.right,.out,.in,
+        .out1,.in1{
+            position: relative;
+            display: block;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #cccccc;
+            z-index: 1;
+            cursor: pointer;
+            transition: all .4s;
+        }
+        .span1:before{
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            content: '';
+            background: #0099ff;
+            z-index: -1;
+            opacity: 0;
+            transform: scaleX(1);
+            transition: all .4s;
+            width: 100%;
+            height: 100%;
+        }
+        .span1:hover:before{
+            opacity: 1;
+        }
+
+        .bot:before{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            display: block;
+            content: '';
+            background: #0099ff;
+            transform: scaleY(0);
+            transform-origin: 50% 0;
+            transition: all .4s;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .bot:hover:before{
+            transform: scaleY(1);
+        }
+
+        .top:before{
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            content: '';
+            background: #0099ff;
+            transform: scaleY(0);
+            transform-origin: 50% 100%;
+            transition: all .4s;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .top:hover:before{
+            transform: scaleY(1);
+        }
+        .left:before{
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            content: '';
+            width: 100%;
+            height: 100%;
+            background: #0099ff;
+            transition: all .4s;
+            transform-origin: 0 100%;
+            transform: scaleX(0);
+            z-index: -1;
+        }
+        .left:hover:before{
+            transform: scaleX(1);
+        }
+        .right:before{
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            content: '';
+            background: #0099ff;
+            transform: scaleX(0);
+            transform-origin: 100% 50%;
+            transition: all .4s;
+            z-index: -1;
+        }
+        .right:hover:before{
+            transform: scaleX(1);
+        }
+        .out:before{
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            content: '';
+            width: 100%;
+            height: 100%;
+            background: #0099ff;
+            transform: scaleX(0);
+            transform-origin: 50% 0;
+            transition: all .4s;
+            z-index: -1;
+        }
+        .out:hover:before{
+            transform: scaleX(1);
+        }
+
+        .in:before{
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            content: '';
+            width: 50%;
+            height: 100%;
+            background: #0099ff;
+            transform: scaleX(0);
+            transform-origin: 0 0;
+            transition: all .4s;
+            z-index: -1;
+        }
+
+        .in:after{
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: block;
+            content: '';
+            width: 50%;
+            height: 100%;
+            background: #0099ff;
+            transform: scaleX(0);
+            transform-origin: 100% 0;
+            transition: all .4s;
+            z-index: -1;
+        }
+        .in:hover:before,.in:hover:after{
+            transform: scaleX(1);
+        }
+        .out1:before{
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            content: '';
+            width: 100%;
+            height: 100%;
+            transform: scaleY(0);
+            transform-origin: 0 50%;
+            transition: all .4s;
+            background: #0099ff;
+            z-index: -1;
+        }
+        .out1:hover:before{
+            transform: scaleY(1);
+        }
+        .in1:before{
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            content: '';
+            width: 100%;
+            height: 50%;
+            transform: scaleY(0);
+            transform-origin: 0 0;
+            transition: all .4s;
+            background: #0099ff;
+            z-index: -1;
+        }
+        .in1:after{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            display: block;
+            content: '';
+            width: 100%;
+            height: 50%;
+            transform: scaleY(0);
+            transform-origin: 0 100%;
+            transition: all .4s;
+            background: #0099ff;
+            z-index: -1;
+        }
+        .in1:hover:before,.in1:hover:after{
+            transform: scaleY(1);
+        }
+    </style>
+</head>
+<body>
+     <span class="span1">animal</span>
+    <span class="bot">animal-bot</span>
+     <span class="top">animal-top</span>
+     <span class="left">animal-left</span>
+    <span class="right">animal-right</span>
+     <span class="out">animal-out</span>
+     <span class="in">animal-in</span>
+    <span class="out1">animal-out1</span>
+     <span class="in1">animal-in1</span>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+       /* const numbers = [1,2,3,4,5];
+        const listItems = numbers.map((number) =>
+            <li>{number}</li>)
+            ReactDOM.render(
+                <ul>{listItems}</ul>,
+                document.getElementById('example')
+            );
+
+        function NumberList(props){
+            const numbers = props.numbers;
+            const listItems = numbers.map((number) =>
+                <li key={number.toString()}>{number}</li>
+            )
+            return (
+                <ul>{listItems}</ul>
+            )
+        }
+        const numbers = [12,34,56,78];
+        ReactDOM.render(
+            <NumberList numbers={numbers}/>,
+            document.getElementById('example')
+        )
+        */
+
+       function Blog(props){
+           const sidebar = (
+               <ul>
+                   {props.posts.map((post) =>
+                       <li key={post.id}>{post.title}</li>
+                   )}
+               </ul>
+           )
+           const content = props.posts.map((post) =>
+            <div key={post.id}>
+                <h3>{post.title}</h3>
+                <p>{post.content}</p>
+            </div>
+           )
+           return (
+               <div>
+                   {sidebar}
+                   <hr/>
+                   {content}
+               </div>
+           )
+       }
+       const posts = [
+           {id:1,title:'hello world',content:'welcome to '},
+           {id:2,title:'installation',content:'you can install react'}
+       ]
+        ReactDOM.render(
+            <Blog posts={posts}/>,
+            document.getElementById('example')
+        )
+    </script>
+</body>
+</html>

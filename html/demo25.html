@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{
+            display: block;
+            width: 80px;
+            height: 45px;
+            text-align: center;
+            line-height: 45px;
+            background: #cccccc;
+            cursor: pointer;
+        }
+        .ech-t{
+            transition: all .4s;
+        }
+        .ech-t:hover{
+            transform: translateY(-10px);
+        }
+        @keyframes flash {
+            0%{
+                transform: translateX(10px);
+            }
+            100%{
+                transform: translateX(100px);
+            }
+        }
+        .ech-r-l{
+            animation: flash 2s ease 0s 2 normal;
+        }
+    </style>
+</head>
+<body>
+    <span class="ech-t">top</span>
+    <span class="ech-r-l">r-l</span>
+</body>
+</html>

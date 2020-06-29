@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var arr = [1,2,3,4,5];
+    //console.log(Array.isArray(arr));
+    var result = arr.reduceRight((previousValue,currentValue) => {
+        return previousValue +  currentValue
+    },10)
+    //console.log(result);
+    //var newArr = arr.splice(2,1);
+    //var newArr1 = arr.splice(2,0,7,8);
+    //var newArr2 = arr.splice(2,1,9);
+   // console.log(arr);
+    //console.log(newArr);
+    //console.log(newArr1);
+
+     /*var flag = arr.every((item) => {
+     return item > 0;
+        })*/
+    //console.log(flag);
+    var newArr = arr.map((item) => {
+        return item + 1;
+    })
+    //console.log(newArr);
+    //console.log(newArr2);
+/*    console.log(arr.lastIndexOf(3));
+    console.log(arr.lastIndexOf(3,2));
+    console.log(arr.lastIndexOf(9));*/
+  /*  function sortNumber(a,b) {
+        return a - b
+    }
+    var newArr1 = arr.sort(sortNumber);
+    console.log(newArr1);*/
+   /* console.log(arr.join());
+    console.log(arr.join('-'));
+    console.log(arr);
+    var len = arr.push(6);
+    console.log(len,arr);*/
+   /* var len = arr.unshift(6);
+    console.log(len)
+    console.log(arr)*/
+/*   var arr1 = arr.slice(2);
+    var arr2 = arr.slice(2,4);
+    var arr3 = arr.slice(1,-2);
+    console.log(arr1);
+    console.log(arr2);
+    console.log(arr3);*/
+    //var arr1 = arr.splice(2,1,12,18);
+    //console.log(arr);
+    //console.log(arr1);
+   /* var flag = arr.every((item) => {
+        return item > 3;
+    })
+    console.log(flag);*/
+    var flag = arr.some((item) => {
+        return item > 5;
+    })
+    //console.log(flag);
+
+    var user = {
+        name:'zhang',
+        sex:'男',
+        age:28,
+        address:'beijing',
+        habbit:['vue','css','html']
+    }
+
+        var arr = [1,2,3]
+        let value;
+      /*  Object.defineProperty(user, 'habbit', {
+            get: () => {
+                console.log('get')
+                return ['vue','css','html'];
+            },
+            set: (newVal) => {
+                console.log('set',newVal);
+                value = newVal;
+            }
+        })*/
+       // var num = user.habbit;
+        //user.habbit.push('react');
+        //console.log(num);
+        //console.log(user.habbit);
+        //只能监听属性，而不是监听对象本身，需要对对象的每个属性进行遍历。对于原本不在对象中的属性难以监听。
+        var _this = this;
+        //console.log(this.user);
+        Object.keys(user).forEach((key)=>{
+            //console.log(key +':'+ user[key]);
+            //console.log(user);
+            Object.defineProperty(user,key,desc(user[key]))
+        })
+        function desc(value){
+            return {
+                enumerable: true,
+                get: function () {
+                    console.log('get it',value);
+                    return value;
+                },
+                set: function (newvalue) {
+                    console.log('set it',newvalue);
+                    value = newvalue;
+                }
+            }
+        }
+    //console.log(user.habbit)
+    user.habbit.push('react');
+    console.log(user.habbit)
+/*    for(var i in user){
+        Object.defineProperty(user,i,{
+            enumerable: true,
+            get:()=> {
+                console.log('get')
+                return user[i];
+            },
+            set:(newVal)=>{
+                console.log('set');
+                user[i] = newVal
+            }
+        })
+    }
+    console.log(user.name)*/
+   // this.user.name = 'zhao'
+
+ /*   function changeIt(object) {
+
+        function descripterFun(value) {
+            return {
+                enumerable: true,
+                get: function () {
+                    console.log('get it');
+                    return value;
+                },
+                set: function (newvalue) {
+                    console.log('set it');
+                    value = newvalue;
+                }
+            }
+        }
+        for(var i in object){
+            Object.defineProperty(object, i,  {
+                enumerable: true,
+                get: function () {
+                    console.log('get it');
+                    return object[i];
+                },
+                set: function (newvalue) {
+                    console.log('set it');
+                    object[i] = newvalue;
+                }
+            })
+        }
+    }*/
+
+    //changeIt(user)
+    //user.address = 'zhengzhou'
+    //console.log(user.name);
+</script>
+</body>
+</html>

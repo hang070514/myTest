@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #droptarget{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+        #droptarget.active{
+           border: 2px solid red
+        }
+    </style>
+</head>
+<body>
+    <input type="file" accept="image/*" multiple onchange="fileinfo(this.files)">
+    <div id="droptarget">drop image files here</div>
+    <input type="file"  onchange="readfile(this.files[0])">
+    <div id="output"></div>
+</body>
+<script>
+    function fileinfo(files) {
+        for(var i = 0; i < files.length; i++) {
+            var f = files[i]
+            console.log(f.name, f.size, f.type)
+            var xhr = new XMLHttpRequest()
+            xhr.open('post','http://localhost:8080/img')
+            xhr.send(f)
+        }
+    }
+    var getBlobURL = window.createObjectURL
+    var revokeBlobURL = window.revokeObjectURL
+    window.onload = function() {
+        var droptarget = document.getElementById('droptarget')
+        droptarget.ondragenter = function(e){
+            var types = e.dataTransfer.types
+            if (!types || (types.contains && types.contains('Files'))
+                || (types.indexOf && types.indexOf('Files')) != -1) {
+                droptarget.classList.add('active')
+                return false
+            }
+        }
+        droptarget.ondragleave = function () {
+            droptarget.classList.remove('active')
+        }
+
+        droptarget.ondrop = function(e) {
+            var files = e.dataTransfer.files
+            console.log('files===', files)
+            for(var i = 0; i < files.length; i++) {
+                var type = files[i].type
+                if(type.substring(0,6) !== 'image/') {
+                    continue
+                }
+              /*  var img = document.createElement('img')
+                img.src = getBlobURL(files[i])
+                img.onload = function() {
+                    this.width = 100
+                    document.body.appendChild(this)
+                    revokeBlobURL(this.src)
+                }*/
+            }
+            droptarget.classList.remove('active')
+            return false
+        }
+    }
+
+    function readfile(f) {
+        var reader = new FileReader()
+        reader.readAsText(f)
+        reader.onload = function() {
+            var text = reader.result
+            var out = document.getElementById('output')
+            out.innerHTML = ''
+            out.appendChild(document.createTextNode(text))
+        }
+    }
+</script>
+</html>

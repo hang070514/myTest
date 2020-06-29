@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,
+	initial-scale=1.0,maximum-scale=1.0,
+	minimum-scale=1.0 ">
+    <style>
+        #box{
+            color: red;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+  <!--  <a href="weixin://" rel="external nofollow" id="btn">立即打开</a>
+    <a href="alipay://">打开支付宝</a>-->
+    <span id="btn1">打开微博</span>
+</body>
+<script>
+    var userAgent = navigator.userAgent;
+    console.log('userAgent====',userAgent);
+   // document.getElementById('box').innerHTML = userAgent
+
+    // 为btn-download 绑定事件，如果在500ms内，没有解析到协议，那么就会跳转到下载链接
+    var appstore, ua = navigator.userAgent;
+    if(ua.match(/Android/i)){
+        appstore = 'market://search?q=com.singtel.travelbuddy.android';
+    }
+    if(ua.match(/iphone|ipod|ipad/)){
+        appstore = "https://itunes.apple.com/cn/app/wei-xin/id414478124?mt=8&ign-mpt=uo%3D4";
+    }
+    function applink(fail){
+        window.location = 'alipays://platformapi/startapp?appId=20000008'
+       /* return function(){
+            var clickedAt = +new Date;
+            // During tests on 3g/3gs this timeout fires immediately if less than 500ms.
+            setTimeout(function(){
+                // To avoid failing on return to MobileSafari, ensure freshness!
+                if (+new Date - clickedAt < 2000){
+                    window.location = fail;
+                }
+            }, 500);
+        };*/
+    }
+
+   document.getElementById('btn1').onclick = function () {
+       console.log(11111222)
+       //window.location.href = 'http://alipays//platformapi/startapp?appId=20000008'
+  /*     var state = window.open('alipay://', '_blank');
+       console.log('state====',state)
+       if(state){
+           window.close()
+       }*/
+       goToWeibo();
+   };
+   function  goToWeibo() {
+        let u = navigator.userAgent;
+        let isAndroid = u.indexOf("Android") > -1; //安卓终端
+        let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if (isAndroid) {
+            console.log(111112223333)
+            // 安卓weibo的scheme协议跳转
+            window.location.href = "sinaweibo://userinfo?uid=3177804914";
+            //window.location.href = "alipays://platformapi/startapp?appId=20000008#"
+            setTimeout(function() {
+                let hidden =
+                    window.document.hidden ||
+                    window.document.mozHidden ||
+                    window.document.msHidden ||
+                    window.document.webkitHidden;
+                if (typeof hidden == "undefined" || hidden == false) {
+                    window.location.href = "https://www.baidu.com/";
+                }
+            }, 2000);
+        }
+        // IOS下的scheme协议跳转
+        if (isIOS) {
+            window.location.href = "sinaweibo://userinfo?uid=3177804914";
+            setTimeout(function() {
+                let hidden =
+                    window.document.hidden ||
+                    window.document.mozHidden ||
+                    window.document.msHidden ||
+                    window.document.webkitHidden;
+                if (typeof hidden == "undefined" || hidden == false) {
+                    window.location.href =
+                        "https://m.weibo.cn/u/3177804914";
+                }
+            }, 2000);
+        }
+    }
+</script>
+</html>

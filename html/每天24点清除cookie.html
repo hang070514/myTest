@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var curDate = new Date()
+    console.log('curDate===',curDate)
+    // 当前时间戳  getTime 返回 1970 年 1 月 1 日至今的毫秒数。
+    var curTamp = curDate.getTime()
+    console.log('curTamp===', curTamp)
+    // 当日凌晨的时间戳,减去一毫秒是为了防止后续得到的时间不会达到00:00:00的状态
+    // toLocaleDateString() 根据本地时间格式，把 Date 对象的日期部分转换为字符串。
+    // 如：会把Thu May 21 2020 20:41:59 GMT+0800 (中国标准时间)  转换成  2020/5/21
+    var curWeeHours = new Date(curDate.toLocaleDateString()).getTime() - 1
+    console.log('curWeeHours===',curWeeHours)
+    // 当日已经过去的时间（毫秒）
+    var passedTamp = curTamp - curWeeHours
+    console.log('passedTamp===', passedTamp)
+    // 当日剩余时间  一天共有24 * 60 * 60 * 1000 = 86,400,000毫秒
+     var leftTamp = 24 * 60 * 60 * 1000 - passedTamp
+     console.log('leftTamp===', leftTamp)
+     var leftTime = new Date()
+    // setTime() 以毫秒设置 Date 对象。
+     leftTime.setTime(leftTamp + curTamp)
+     // 创建cookie
+    // toUTCString() 根据世界时，把 Date 对象转换为字符串。
+     document.cookie = 'firstEnter=have' + ';expires=' + leftTime.toUTCString()
+
+    var source = localStorage.getItem('zhang') || 'ecust'
+    console.log('source====',source)
+</script>
+</html>

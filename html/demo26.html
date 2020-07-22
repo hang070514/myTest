@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var obj = {}
+        Object.defineProperty(obj, 'age', {
+            get: function() {
+                console.log('读取obj的age属性')
+                return age
+            },
+            set: function(newValue) {
+                console.log('将obj的age属性值改为'+newValue)
+                age = newValue
+            }
+        })
+    // console.log(obj.age)
+    obj.age = 28
+
+</script>
+</html>

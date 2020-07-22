@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid blue;
+            overflow: hidden;
+        }
+        .zh{
+            display: inline-block;
+            animation: flash 4s linear infinite;
+            transform: translateX(180px);
+        }
+        @Keyframes flash{
+            0{
+                transform: translateX(0px);
+             }
+            100%{
+                transform: translateX(-180px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span class="zh">模仿走马灯效果</span>
+    </div>
+</body>
+<script>
+
+</script>
+</html>

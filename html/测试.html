@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .coverInfo {
+            overflow-x: scroll;
+        }
+        .coverInfo ul {
+            list-style: none;
+            display: -webkit-box;
+            -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: none;
+            overflow: -moz-scrollbars-none;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="coverInfo">
+    <ul>
+        <li class="itemInCovers"></li>
+        <li class="itemInCovers"></li>
+        <li class="itemInCovers"></li>
+    </ul>
+</div>
+
+</body>
+<script>
+    var arr = [1, 2, 3, 4, 5]
+
+    //  Array.filter  返回满足条件的元素组成的数组
+    var tempArr = arr.filter((item) => {
+        return item > 3
+    })
+    console.log('tempArr===',  tempArr)
+
+    //  Array.every  返回布尔值  每一项都满足返回true  否则返回false
+    var a = arr.every((item) => {
+        return item > 0
+    })
+    console.log('a===', a)
+    var b = arr.every((item) => {
+        return item > 3
+    })
+    console.log('b===', b)
+
+    // Array.some  返回布尔值  有一项满足就返回true
+    var c = arr.some((item) => {
+        return item > 4
+    })
+    console.log('c===', c)
+
+    // Array.map  返回调用结果组成的数组
+    var arr1 = arr.map((item) => {
+        return item + 1
+    })
+    console.log('arr1====', arr1)
+</script>
+</html>

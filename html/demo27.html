@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span:nth-child(1){
+            color: red;
+        }
+        span:nth-child(3){
+            color: green;
+        }
+        span:nth-child(5){
+            color: blue;
+        }
+        button:nth-child(7){
+            margin-right: 15px;
+        }
+        .box1{
+            position: absolute;
+            top: 80px;
+            left: 0;
+            z-index: 3;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .box2{
+            position: absolute;
+            top: 90px;
+            left: 100px;
+            z-index: 1;
+            width: 200px;
+            height: 200px;
+            background: green;
+        }
+        .box3{
+            position: absolute;
+            top: 100px;
+            left: 250px;
+            z-index: 2;
+            width: 200px;
+            height: 200px;
+            background: blue;
+        }
+        .note{
+            position: absolute;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            border: 1px solid red;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    当前时间：<span></span><span>:</span><span></span><span>:</span><span></span><br>
+    <button>start</button><button>stop</button>
+
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+
+    <button>右上角</button>
+    <button>右下角</button>
+    <span class="note">提示</span>
+</body>
+<script>
+
+    var timer = setInterval(() => {
+        var date = new Date();
+        document.querySelectorAll('span')[0].innerHTML = date.getHours()
+        document.querySelectorAll('span')[2].innerHTML = date.getMinutes()
+        let sec = date.getSeconds()
+        if (sec < 10) {
+            sec = '0' + sec
+        }
+        document.querySelectorAll('span')[4].innerHTML = sec
+    },1000)
+    document.querySelectorAll('button')[0].onclick = function() {
+        timer = setInterval(() => {
+            var date = new Date();
+            document.querySelectorAll('span')[0].innerHTML = date.getHours()
+            document.querySelectorAll('span')[2].innerHTML = date.getMinutes()
+            let sec = date.getSeconds()
+            if (sec < 10) {
+                sec = '0' + sec
+            }
+            document.querySelectorAll('span')[4].innerHTML = sec
+            //console.log('当前时间：',date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
+        },1000)
+    }
+    document.querySelectorAll('button')[1].onclick = function() {
+        clearInterval(timer)
+    }
+    var num = 2000
+/*    document.querySelectorAll('div')[0].onclick = function() {
+        num++
+        document.querySelectorAll('div')[0].style.zIndex = num
+    }
+    document.querySelectorAll('div')[1].onclick = function() {
+        num++
+        document.querySelectorAll('div')[1].style.zIndex = num
+    }
+    document.querySelectorAll('div')[2].onclick = function() {
+        num++
+        document.querySelectorAll('div')[2].style.zIndex = num
+    }*/
+
+    var box1 = document.querySelectorAll('div')[0]
+    console.log(box1.getBoundingClientRect())
+
+    var box2 = document.querySelectorAll('div')[1]
+    console.log(box2.getBoundingClientRect())
+
+
+    var box3 = document.querySelectorAll('div')[2]
+    console.log(box3.getBoundingClientRect())
+
+    var btn1 = document.querySelectorAll('button')[2]
+    var btn2 = document.querySelectorAll('button')[3]
+    var note = document.querySelector('.note')
+    btn1.onclick = function () {
+        note.style.left = box3.getBoundingClientRect().right + 'px'
+        note.style.top = box3.getBoundingClientRect().y + 'px'
+    }
+
+    btn2.onclick = function () {
+        note.style.left = box3.getBoundingClientRect().right + 'px'
+        note.style.top = box3.getBoundingClientRect().bottom + 'px'
+    }
+</script>
+</html>

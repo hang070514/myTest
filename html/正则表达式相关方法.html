@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //var result = 'javascript'.search(/script/)
+    //console.log(result)
+    console.log('12-34-56'.replace(/-/, ':'))  // 12:34-56
+    console.log('12-34-56'.replace(/-/g, ':')) // 12:34:56
+    console.log('12-34-56'.split(/-/))  // ["12", "34", "56"]
+
+    let str = 'I love JavaScript'
+    // let result  = str.match(/Java(Script)/)
+    // console.log(result)  // ["JavaScript", "Script", index: 7, input: "I love JavaScript", groups: undefined]
+
+    // let result  = str.match(/Java(Script)/g)
+    // console.log(result)  // ["JavaScript"]
+
+    //let result  = str.match(/HTML/)
+    // console.log(result)  // null
+    console.log(/love/i.test(str))
+
+    var pattern = /Java/g
+    var text = 'JavaScript is more fun than Java!'
+    var result;
+    while((result = pattern.exec(text)) != null){
+        console.log("Matched'"+ result[0] + "'"+ " at position " + result.index + "; next search begins at " + pattern.lastIndex)
+    }
+</script>
+</html>

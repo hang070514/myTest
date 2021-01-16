@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let worker = {
+        someMethod() {
+            return 1;
+        },
+
+        slow(x) {
+            alert("Called with " + x);
+            return x * this.someMethod(); // (*)
+        }
+    };
+
+    function cachingDecorator(func) {
+        let cache = new Map();
+        return function(x) {
+            if (cache.has(x)) {
+                return cache.get(x);
+            }
+            let result = func.call(this, x); // 现在 "this" 被正确地传递了
+            cache.set(x, result);
+            return result;
+        };
+    }
+
+    worker.slow = cachingDecorator(worker.slow); // 现在对其进行缓存
+
+    // alert( worker.slow(2) );
+    // alert( worker.slow(2) );
+
+    let animal = {
+        eats: true
+    }
+
+    let rabbit = {
+        jump: true
+    }
+
+    rabbit.__proto__ = animal
+
+    console.log(rabbit.eats)
+    console.log(rabbit.jump)
+</script>
+</html>

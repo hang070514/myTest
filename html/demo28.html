@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function first(str) {
+        return str.charAt(0).toUpperCase()+ str.slice(1)
+    }
+    // console.log(first('hello'))
+
+    function truncate(str,max) {
+        if (str.length > max) {
+            return str.substr(0,max - 1)+ '...'
+        } else {
+            return str
+        }
+    }
+    // console.log(truncate("What I'd like to tell on this topic is:", 20))
+
+    var arr = ['hello','world','haha']
+    var newArr = arr
+    var copyArr = arr.slice()
+    console.log(arr == newArr)
+    console.log(arr == copyArr)
+    //arr.push(4)
+    console.log('arr===', arr.join(''))
+    console.log('newArr===', newArr)
+    console.log('copyArr===', copyArr)
+
+    function camelize(str){
+        return str.split('-').map((item, index) =>
+                index = 0 ? item : item = item.charAt(0).toUpperCase() + item.substring(1)
+        ).join('')
+    }
+
+    console.log(camelize("background-color"));
+
+
+    var m = [5,2,1,-10,8]
+    m.sort(function(a,b){
+        return a - b
+    })
+    console.log(m.reverse())
+
+
+    console.log((Math.random()*2).toFixed(0))
+
+    var arr1 = [2,4,3,8,2,3,6]
+    var newArr1 = []
+    for (var i = 0; i < arr1.length; i++){
+        if (newArr1.indexOf(arr1[i]) < 0) {
+            newArr1.push(arr1[i])
+        }
+    }
+    console.log(newArr1)
+
+    let values = ["Hare", "Krishna", "Hare", "Krishna",
+        "Krishna", "Krishna", "Hare", "Hare", ":-O"
+    ];
+
+    var set = new Set(values)
+    console.log(set)
+
+    let salaries = {
+        "John": 100,
+        "Pete": 300,
+        "Mary": 250
+    };
+
+    var temp = Object.values(salaries)
+    console.log('temp===',temp)
+    var sum = 0
+    for (let val of temp) {
+        sum += val
+    }
+    console.log(sum)
+    console.log(window.Promise)
+</script>
+</html>

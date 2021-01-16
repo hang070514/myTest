@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let date = new Date('2020-08-08')
+    console.log('date====',date)
+    let ms = Date.parse('2020-08-08')
+    console.log('ms====',ms)
+    let date1 = new Date(2012, 0, 3);
+    console.log(date1.getDay())
+    let date2 = new Date();
+    console.log('date2====', date2.getHours() * 3600 + date2.getSeconds() * 60 + date2.getSeconds(), getSecondsToday())
+
+    function getSecondsToday() {
+        let now = new Date();
+
+        // 使用当前的 day/month/year 创建一个对象
+        let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+        let diff = now - today; // ms difference
+        return Math.round(diff / 1000); // make seconds
+    }
+
+    let date3 = new Date()
+    console.log(date3.getFullYear() + '-' + (date3.getMonth()+ 1) + '-' + date3.getDate())
+
+    let obj = {
+        name: 'zhang',
+        age: 30
+    }
+    console.log(obj)
+    let json = JSON.stringify(obj)
+    console.log(json)
+
+
+    function sumTo1(n) {
+        var result = 0
+        for(let i = 1; i <= n; i++){
+            result += i
+        }
+        return result
+    }
+    function sumTo2(n) {
+        var result = 0
+        if (n <= 1) {
+            result = n
+        } else {
+            result = n + sumTo2(n - 1)
+        }
+        return result
+    }
+    function sumTo3(n) {
+        var result = 0
+        if (n <= 1) {
+            result = n
+        } else {
+            result = (n + 1) * n / 2
+        }
+        return result
+    }
+    console.log(sumTo1(5),sumTo2(5),sumTo3(5))
+
+    {
+        let m = 'hello'
+        console.log(m)
+    }
+    console.log(window.Promise)
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arr = [1,2,3,4,5]
+  /*  let result = arr.map((item) => {
+        return item + 1
+    })
+    console.log('result=====', result)*/
+
+    Array.prototype.myMap = function (arr, callback) {
+        if (!Array.isArray(arr) || !arr.length || typeof callback != 'function') {
+            return
+        }
+        let newArr = []
+        for(let i = 0; i < arr.length; i++){
+            newArr.push(callback(arr[i],i,arr))
+        }
+        return newArr
+    }
+ /*   let result = arr.myMap(arr,(item) => {
+        return item * item
+    })
+    console.log('result11=====', result)*/
+
+    Array.prototype.myFilter = function (arr, callback) {
+        if (!Array.isArray(arr) || !arr.length || typeof callback != 'function') {
+            return
+        }
+        let newArr = []
+        for(let i = 0; i < arr.length; i++){
+            if (callback(arr[i],i,arr)) {
+                newArr.push(arr[i])
+            }
+        }
+        return newArr
+    }
+    let result1 = arr.myFilter(arr,(item) => {
+        return item > 3
+    })
+    console.log('result1====', result1)
+</script>
+</html>

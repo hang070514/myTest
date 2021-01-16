@@ -34,26 +34,25 @@
     cb.addEventListener('click',function(e){
         e.preventDefault();
     },false)
-   /* parent.onclick=function () {
+/*    parent.onclick=function () {
         console.log('我是parent');
     }
     child.onclick=function (e) {
         //console.log('e==',e)
-        //e.stopPropagation();
+        e.stopPropagation();
         console.log('我是child');
 
     }*/
 
     //true  是捕获   false  是冒泡
     parent.addEventListener('click',function(e){
-        e.stopPropagation();
-        console.log('我是parent22');
+        e.stopPropagation()
+        console.log('我是parent');
     },true)
 
     child.addEventListener('click',function(e){
-        //e.stopPropagation();
-        console.log('我是child11');
-    },true)
+        console.log('我是child');
+    },false)
 
 </script>
 </html>

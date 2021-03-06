@@ -15,13 +15,14 @@
 <script>
     function throttle(fn,delay) {
        //记录上一次触发的时间
-       var lastTime = 0;
+       let lastTime = 0;
        return function(){
+           let args = arguments;
            //记录当前函数触发的时间
-           var nowTime = Date.now();
+           let nowTime = Date.now();
            if(nowTime - lastTime > delay){
                //修正this问题
-               fn.call(this);
+               fn.apply(this,args);
                //同步时间
                lastTime = nowTime;
            }
@@ -35,12 +36,13 @@
     }*/
     function debounce(fn,delay) {
         //记录上一次的计时器
-        var timer = null;
+        let timer = null;
         return function(){
+            let args = arguments;
             //清除上一次的计时器
             clearTimeout(timer)
             timer = setTimeout(function(){
-                fn.apply(this)
+                fn.apply(this,args)
             },delay)
         }
     }

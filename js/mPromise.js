@@ -1,7 +1,7 @@
 /**
  * Created by zhang on 2019/10/31.
  */
-function Promise(executor){
+/*function Promise(executor){
     let _this = this;
     _this.status = 'pending'
     _this.value = undefined
@@ -29,5 +29,5 @@ Promise.prototype.then = function (onFulfilled,onRjected) {
     if(_this.status === 'rejected'){
         onRjected(_this.reason)
     }
-}
-module.exports = Promise
+}*/
+// module.exports = Promise

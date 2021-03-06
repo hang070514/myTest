@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="./promise7.js"></script>
+<script>
+/*    let p = new Promise((resolve,reject) => {
+        console.log('执行')
+        resolve('resolve')
+        reject('reject')
+    })
+    p.then((res) => {
+        console .log('res', res)
+        },
+        (err) => {})*/
+
+    function  fn1() {
+        let p = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                console.log('fn1开始执行')
+                resolve('随便写点东西1')
+            },300)
+        })
+        return p
+    }
+
+    function  fn2() {
+        let p = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                console.log('fn2开始执行')
+                resolve('随便写点东西2')
+            },300)
+        })
+        return p
+    }
+
+    function  fn3() {
+        let p = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                console.log('fn3开始执行')
+                resolve('随便写点东西3')
+            },300)
+        })
+        return p
+    }
+
+/*    fn1().then((data) => {
+        console.log(data)
+        return fn2()
+    }).then((data) => {
+        console.log(data)
+        return fn3()
+    }).then((data) => {
+        console.log(data)
+    })*/
+
+    function check(){
+        return new Promise((resolve,reject) => {
+            setTimeout(() => {
+                let num = Math.ceil(Math.random() * 10)
+                if (num > 5) {
+                    resolve('数字大于5')
+                } else {
+                    reject('数字小于等于5')
+                }
+                //console.log('num===',num)
+            },0)
+        })
+    }
+
+/*    check().then((data) => {
+        console.log(x)
+        console.log(data)
+        },
+        (err) => {
+            console.log('err===',err)
+        }).catch((e) => {
+            console.log('e', e)
+    })*/
+   /*     check().then((data) => {
+            console.log(data)
+        }).catch((e) => {
+            console.log('e===', e)
+        })*/
+
+ /*   Promise.all([fn1(),fn2(),fn3()]).then((res) => {
+        console.log('res====',res)
+    })*/
+
+    Promise.race([fn1(),fn2(),fn3()]).then((data) => {
+        console.log(data)
+    })
+</script>
+</html>

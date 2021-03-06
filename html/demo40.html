@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let promise = new Promise((resolve,reject) => {
+        resolve()
+    })
+
+   /* let promise2 = promise.then((data) => {
+        console.log('data===',data)
+        return 'x'
+    }).then((data) => {
+        console.log(data)
+    })*/
+
+   let promise2 = promise.then(() => {
+       // console.log(this)
+       return promise2
+   })
+</script>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 防抖是指事件被触发n秒后才会执行回调，如果在这n秒内事件又被触发，则重新计算
+    function debounce(fn,delay) {
+        let timer;
+        return function() {
+            let args = arguments
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                fn.apply(this,args)
+                },
+            delay)
+        }
+    }
+    //节流是指规定一个单位时间，只能有一次触发事件的回调函数执行。如果在同一时间内某个事件
+    // 被触发多次，那么只有一次生效
+    function throttle(fn,delay){
+        let lastTime = 0
+        return function() {
+            let args = arguments
+            let nowTime = Date.now()
+            if (nowTime - lastTime > delay) {
+                fn.apply(this,args)
+                lastTime = nowTime
+            }
+        }
+    }
+
+    // 防抖是指事件n秒后才会执行回调函数，如果在n秒内又被触发，则重新执行
+    function debounce(fn,delay) {
+        let timer = null
+        return function() {
+            let args = arguments
+            // 清除上一次的
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                fn.apply(this,args)
+            },delay)
+        }
+    }
+
+    //节流函数是指规定一个单位时间，在单位时间内只能有一次触发事件的回调函数。
+    // 如果在这单位时间内被多次触发，只有一个生效
+    function throttle(fn,delay) {
+        let lastTime = 0
+        return function() {
+            let args = arguments
+            let nowTime = Date.now()
+            if (nowTime - lastTime >delay) {
+                fn.apply(this,args)
+                lastTime = nowTime
+            }
+        }
+    }
+
+    // 防抖是指事件触发n秒后才会执行回调函数，如果在n秒内被再次触发，则从新计算
+    // 按钮点击
+    function debounce(fn,delay) {
+        let timer = null
+        return function() {
+            let args = arguments
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                fn.apply(this,args)
+            },delay)
+        }
+    }
+
+    // 节流是指规定一个单位时间，在这单位时间内只能有一次触发回调。如果在这单位时间内
+    // 被多次触发，则只有一次响应
+    //
+    function throttle(fn,delay){
+        let lastTime = 0
+        return function() {
+            let args = arguments
+            let nowTime = data.now()
+            if (nowTime - lastTime > delay) {
+                fn.apply(this,args)
+                lastTime = nowTime
+            }
+        }
+    }
+</script>
+</html>

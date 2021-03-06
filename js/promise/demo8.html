@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="./promise8.js"></script>
+<script>
+    function fn1() {
+        let p = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                console.log('我是fn1')
+                resolve('fn1执行完成')
+            },0)
+        })
+        return p
+    }
+
+    function fn2() {
+        let p = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                console.log('我是fn2')
+                resolve('fn2执行完成')
+            },0)
+        })
+        return p
+    }
+
+    function fn3() {
+        let p = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                console.log('我是fn3')
+                resolve('fn3执行完成')
+            },0)
+        })
+        return p
+    }
+
+    fn1().then((data) => {
+        console.log(data)
+        return fn2()
+    }).then((data) => {
+        console.log(data)
+        return fn3()
+    }).then((data) => {
+        console.log(data)
+    })
+
+  let promise = new Promise((resolve,reject) => {
+      resolve()
+  })
+
+ /*  let promise2 = promise.then(() => {
+       return promise2
+   },(err) => {
+       console.log(err)
+   })*/
+</script>
+</html>

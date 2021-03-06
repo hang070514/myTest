@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <span>js</span>
+    <span>css</span>
+    <span>html</span>
+    <span>vue</span>
+    <span>react</span>
+</body>
+<script>
+    var spanArr = document.getElementsByTagName('span')
+    for(var i = 0; i < spanArr.length; i++){
+        (function (i) {
+            var btn = spanArr[i]
+            btn.onclick = function () {
+                console.log('你点击了第'+i+'个按钮')
+            }
+        })(i)
+    }
+</script>
+</html>

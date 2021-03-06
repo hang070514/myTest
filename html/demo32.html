@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id='box'>
+
+</div>
+<script>
+    /*let observe = new MutationObserver(function(){
+        // 这一步之所以打印出p的数量，是为了验证插完dom节点后，才执行这一步。
+        console.log('插入完成',document.querySelectorAll('p').length)
+    })
+    observe.observe(box,{childList:true})*/
+    console.log('我是同步代码')
+/*    for(let i = 0 ;i < 50;i++){
+        box.appendChild(document.createElement('p'))
+    }
+    for(let i = 0 ;i < 50;i++){
+        box.appendChild(document.createElement('p'))
+    }*/
+
+    // console.log('pwd====',sessionStorage.getItem('pwd'))
+
+    var data = {name: 'zhang'}
+    observe(data)
+     data.name = 'zhao'
+    function observe(data) {
+        Object.keys(data).forEach((key) => {
+            defineReactive(data,key,data[key])
+        })
+    }
+    function defineReactive(data,key,val){
+        // observe(val)
+        Object.defineProperty(data, key, {
+            enumerable: true,
+            configurable: false,
+            get: function() {
+                return val
+            },
+            set: function (newval) {
+                console.log('监听到值变化了', val, '-->', newval)
+                val = newval
+            }
+        })
+    }
+    console.log('a1===', a)
+    var a = 'hello'
+    console.log('a2===', a)
+    var a;
+    console.log('a3===', a)
+</script>
+</body>
+</html>
+

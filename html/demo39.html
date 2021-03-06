@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="../js/promise/promise5.js"></script>
+<script>
+    function fn1() {
+        var p = new MyPromise((resolve,reject) => {
+            setTimeout(() => {
+                console.log('哈哈  我是fn1')
+                resolve('随便什么数据1')
+            },600)
+        })
+        return p
+    }
+    function fn2() {
+        var p = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                console.log('哈哈  我是fn2')
+                resolve('随便什么数据2')
+            },200)
+        })
+        return p
+    }
+    function fn3() {
+        var p = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                console.log('哈哈  我是fn3')
+                resolve('随便什么数据3')
+            },200)
+        })
+        return p
+    }
+
+    var arr = []
+    // arr.push(fn1)
+    arr.push(fn2)
+    arr.push(fn3)
+
+ /*   for(let i = 0; i < arr.length; i++){
+         arr[i]()
+        //console.log(arr[i])
+    }*/
+
+/* let p = new Promise(function (resolve,reject) {
+     setTimeout(() => {
+         console.log('执行完成')
+         resolve('随便写点东西')
+     },200)
+ })*/
+ // p.race(arr)
+
+   /* fn1().then((data) => {
+        console.log('data====',data)
+    })*/
+   Promise.all([fn1(), fn2(), fn3()]).then((data) => {
+       console.log('data',data)
+   },(err) => {
+       console.log('err', err)
+   })
+</script>
+</html>

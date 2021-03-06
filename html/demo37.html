@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 防抖函数是指在n秒后才会执行回调函数，如果在n秒内又被触发，则重新计算
+    function debounce(fn,delay){
+        let timer = null
+        return function() {
+            let args = arguments
+            clearTimeout(timer)
+            setTimeout(() => {
+                fn.apply(this,args)
+            },delay)
+        }
+    }
+
+    // 节流函数是指规定一个单位时间，在这单位时间内只能有一次触发函数的回调，如果多次被触发
+    // 则只执行一次
+    function throttle(fn,delay){
+        let lastTime = 0
+        return function() {
+            let args = arguments
+            let nowTime = Date.now()
+            if (nowTime - lastTime > delay) {
+                fn.apply(this,args)
+                lastTime = nowTime
+            }
+        }
+    }
+
+/*    var p = new Promise((resolve,reject)=> {
+        console.log('执行完成')
+        resolve('哈哈哈哈')
+    })*/
+
+    function  fn1() {
+        var p = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                console.log('执行完成')
+                resolve('随便写点数据')
+            },0)
+        })
+        return p
+    }
+/*    fn1().then((data) => {
+        console.log(data)
+    })*/
+
+    function fn2(callback){
+        console.log('哈哈哈11')
+        setTimeout(() => {
+            console.log('执行完成33')
+            callback('回调函数')
+        },2000)
+        console.log('哈哈哈22')
+    }
+    fn2((data) => {
+        console.log('data',data)
+    })
+</script>
+</html>

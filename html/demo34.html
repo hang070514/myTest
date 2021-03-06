@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5 ">
+    <title>Title</title>
+    <style>
+        #line1{
+            height: 1px;
+            background: red;
+        }
+        #line2{
+            height: 1px;
+            background: blue;
+            margin-top: 10px;
+            transform:scale(1,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="line1"></div>
+    <div id="line2"></div>
+</body>
+<script>
+    var fn1 = function () {
+        console.log('我是fn1')
+    }
+    var fn2 = function () {
+        console.log('我是fn2')
+    }
+    var fn3 = function () {
+        console.log('我是fn3')
+    }
+    var arr = [];
+
+    arr.push(fn1)
+    arr.push(fn2)
+    arr.push(fn3)
+
+    for(let i = 0; i < arr.length; i++){
+        // arr[i]()
+        //console.log(arr[i])
+        //let f = arr[i]
+        // f()
+    }
+    arr.forEach((item) => {
+        item()
+    })
+    arr.forEach(item => {
+        item()
+    })
+    arr.forEach(fn => fn())
+</script>
+</html>

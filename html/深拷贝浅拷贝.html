@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var obj = {
+        name: 'zhang',
+        age: 30,
+        school: {
+            score: 90,
+            level:'high'
+        }
+    }
+    console.log('修改前obj：',obj)
+    var copyObj = {...obj}
+    // console.log('修改前obj：',obj)
+    copyObj.school.level = 'middle'
+    console.log('修改后obj',obj)
+    console.log('修改后copy',copyObj)
+
+
+    function deep(source) {
+        return JSON.parse(JSON.stringify(source))
+    }
+
+ /*   var copy = deep(obj)
+    copy.school.level = 'middle'
+    console.log('修改后obj',obj)
+    console.log('修改后copy',copy)*/
+
+    var arr = [1,2,2,3,4,4,5]
+    console.log([...new Set(arr)])
+    var arr1 = [9,8,8,9,7,6,5]
+    console.log(Array.from(new Set(arr1)))
+
+    function noRepeat(arr) {
+        let res = new Map()
+        return arr.filter((item) =>  {  return !res.has(item) && res.set(item,1) })
+    }
+    var arr2 = ['q','w','e','r','e','w']
+    // console.log(noRepeat(arr2))
+
+    var arr4 = [1,2,3,4,5]
+    // console.log(arr4.filter((item) => { return item > 2 } ))
+
+    var arr5 = []
+    var arr6 = [{name: 'zhang', age: 28}]
+    var newArr = arr5.concat(arr6)
+    console.log('newArr====', newArr)
+</script>
+</html>

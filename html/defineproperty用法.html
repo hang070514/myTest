@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <span>点我</span>
+   <!--<input type="text" id="txt">
+   <p id="show"></p>-->
+</body>
+<script>
+    var person = {
+        name:'zhang'
+    }
+
+   /*     Object.defineProperty(person,'age',{
+            get: () => {
+                console .log('get age====')
+                return 28
+            },
+            set: (newVal) => {
+                console .log('set newVal====',newVal)
+                // person['age'] = newVal
+        }
+        })*/
+/*    document.querySelector('span').onclick = function () {
+        // console.log(person)
+        console.log('=====',person.age)
+        // test()
+        person.age = 45
+        //console.log('------',person.age)
+        //console.log('+++++',person)
+    }*/
+
+ /*   var obj = {}
+
+    Object.defineProperty(obj, 'txt', {
+        get: function () {
+            return obj
+        },
+        set: function (newValue) {
+            document.getElementById('txt').value = newValue
+            document.getElementById('show').innerHTML = newValue
+        }
+    })
+    document.addEventListener('keyup',
+        function (e) {
+            obj.txt = e.target.value
+        })*/
+/*
+    function defineObjectProperty(obj,key,value){
+        Object.defineProperty(obj,key,{
+            get() {
+                console.log('get====',value)
+                return value
+            },
+            set(newValue){
+                console.log('newValue',newValue)
+                value = newValue
+            }
+        })
+    }
+    defineObjectProperty(person,'age',30)
+    console.log(person.age)
+    person.age = 24
+    console.log('person===',person.age)*/
+
+
+  /*  defineObjectProperty(person,'job','vue')
+
+    console.log('------',person.job)
+    person.job = 'react'
+    console.log('======', person.job)*/
+
+    //  get value vue
+    //  vue
+    // set newValue react
+    // get value react
+    // react
+    function defineObjectProperty(obj,key,value) {
+        Object.defineProperty(obj,key,{
+            get() {
+                console.log('get value ===',value)
+                return value
+            },
+            set(newValue) {
+                console.log('set newValue===',newValue)
+                value = newValue
+            }
+        })
+    }
+    function test(obj) {
+        Object.keys(obj).forEach((key) => {
+            Object.defineProperty(obj,key,{
+                get() {
+                    console.log('get value ===',obj[key])
+                    return obj[key]
+                },
+                set(newValue) {
+                    console.log('set newValue===',newValue)
+                    obj[key] = newValue
+                }
+            })
+            // console.log('key====',key,obj[key])
+        })
+    }
+    test(person)
+    // console.log(person.name)
+</script>
+</html>

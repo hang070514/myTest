@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    Function.prototype.call2 = function (context) {
+        var context = context || window
+
+        context.fn = this
+        var args = []
+        for(var i = 1; i < arguments.length; i++){
+            args.push('arguments['+i+']')
+        }
+        var result = eval('context.fn('+args+')')
+        delete context.fn
+        return result
+    }
+    Function.prototype.apply2 = function (context,arr) {
+        var context = context || window
+        context.fn = this
+        var args = []
+        var result
+        if (!arr) {
+            result = context.fn()
+        } else {
+            for(var i = 0; i < arr.length; i++){
+                args.push('arr['+i+']')
+            }
+            result = eval('context.fn('+args+')')
+        }
+        delete context.fn
+        return result
+    }
+    var cat = {
+        food: 'fish',
+        eat(name,age) {
+            console.log(name)
+            console.log(age)
+            console.log('i like ' + this.food)
+            return {
+                name: name,
+                age:age
+            }
+        }
+    }
+    var dog = {
+        food: 'bound'
+    }
+    //console.log(cat.eat.call2(dog,'po',5))
+    // console.log(cat.eat.apply2(dog,['hha',20]))
+/*
+    // 防抖函数是指n秒之后才会触发回调，如果在n秒之内又被触发，则重新计算
+    function debounce(fn,delay) {
+        let timer = null
+        return function() {
+            let args = arguments
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                fn.apply(this,args)
+            },delay)
+        }
+    }
+    // 节流函数是 指规定一个单位时间，在这单位时间内只能触发一次回调函数，如果触发多次，则只有一次生效
+    function throttle(fn,delay) {
+       let lastTime = 0
+        return function() {
+           let nowTime = Date.now()
+           let args = arguments
+           if (nowTime - lastTime > delay) {
+               fn.apply(this,args)
+               lastTime = nowTime
+           }
+        }
+    }*/
+
+
+
+</script>
+</html>

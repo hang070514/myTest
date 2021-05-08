@@ -8,62 +8,51 @@
 
 </body>
 <script>
-    var cat = {
+    let cat = {
         food: 'fish',
         eat(name,age) {
             console.log(name)
             console.log(age)
-            console.log('i like ' + this.food)
+            console.log('i like '+ this.food)
             return {
                 name:name,
                 age:age
             }
         }
     }
-    var food = 'milk'
-    var dog = {
+    let dog = {
         food: 'bound'
     }
 
-    // cat.eat()
-    //cat.eat.call(dog)
-    Function.prototype.call3 = function (context) {
+    Function.prototype.call2 = function(context) {
         var context = context || window
-
         context.fn = this
-        var args = []
-        for(var i = 1; i <arguments.length; i++){
+        let args = []
+        for(let i =1; i < arguments.length; i++){
             args.push('arguments['+i+']')
         }
-
-        var result = eval('context.fn('+args+')')
-
+        let result = eval('context.fn('+args+')')
         delete context.fn
         return result
     }
-    //console.log(cat.eat.call3(dog,'pp',4))
+    // console.log(cat.eat.call2(dog,'po',8))
 
     Function.prototype.apply2 = function(context,arr) {
         var context = context || window
-
         context.fn = this
-
         let args = []
         let result
         if (!arr) {
             context.fn()
         } else {
-            for(var i = 0; i < arr.length; i++){
+            for(let i = 0; i < arr.length; i++){
                 args.push('arr['+i+']')
             }
+            result = eval('context.fn('+args+')')
         }
-        result = eval('context.fn('+args+')')
-        // let result = eval('context.fn('+args+')')
         delete context.fn
         return result
     }
-
-    // console.log(cat.eat.apply(dog,['hello',9]))
-    console.log(cat.eat.apply2(dog,['hello',90]))
+    console.log(cat.eat.apply2(dog,['hello',4]))
 </script>
 </html>

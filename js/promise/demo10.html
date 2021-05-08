@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="./promise10.js"></script>
+<script>
+    function fn1() {
+        return new Promise((resolve,reject) => {
+            setTimeout(() =>  {
+                console.log('执行fn1方法')
+                resolve('随便写点数据1')
+            },200)
+        })
+    }
+
+    function fn2() {
+        return new Promise((resolve,reject) => {
+            setTimeout(() =>  {
+                console.log('执行fn2方法')
+                resolve('随便写点数据2')
+            },300)
+        })
+    }
+
+    function fn3() {
+        return new Promise((resolve,reject) => {
+            setTimeout(() =>  {
+                console.log('执行fn3方法')
+                resolve('随便写点数据3')
+            },0)
+        })
+    }
+
+/*    fn1().then((data) => {
+        console.log(data)
+        return fn2()
+    }).then((data) => {
+        console.log(data)
+        return fn3()
+    }).then((data) => {
+        console.log(data)
+    })*/
+
+
+   /* let p = new Promise((resolve,reject) => {
+        resolve()
+    })*/
+ /*   Promise.all([fn1(),fn2(),fn3()]).then((res) => {
+            console.log('res===',res)
+        },
+        (err) => {
+            console.log(err)
+        })*/
+
+    Promise.race([fn1(),fn2(),fn3()]).then((data) => {
+        console.log(data)
+        },
+        (err) => {
+            console.log(err)
+        })
+</script>
+</html>

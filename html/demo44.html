@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--我是注释-->
+    <p>
+        hello world <br>
+    </p>
+</body>
+<script>
+    var doc= document.documentElement
+    //console.log('doc====',doc,doc.nodeType,doc.ownerDocument)
+    var doc1= document.querySelector('body')
+    //console.log('doc1====',doc1,doc1.nodeType)
+    //var childNode = doc.childNodes;
+    // console.log('childNode====',childNode)
+ /*   childNode.forEach((node) => {
+        //console.log(node.nodeType+':::::'+node.nodeName+'::::'+node.nodeValue)
+    })*/
+    // nodeType 1 元素节点  3 文本节点
+    var box = document.querySelector('p')
+    //var childNode = box.childNodes
+     console.log('box====',box)
+    // console.log('childNode====',childNode)
+    var el = box.firstChild
+    console.log('el====',el)
+    while (el !== null){
+        // console.log(el.nodeName)
+        el = el.nextSibling
+    }
+    var childNode = box.childNodes
+    //  console.log('childNode====',childNode)
+    childNode.forEach((node) => {
+        console.log('node.parentNode===',node.parentNode)
+        console.log('node.nodeName====',node.nodeName)
+        console.log('node.parentElement====',node.parentElement)
+    })
+    //console.log('el.parentNode====',el.parentNode)
+    // console.log('el.parentElement====',el.parentElement)
+</script>
+</html>

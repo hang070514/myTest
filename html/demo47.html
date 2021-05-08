@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .parent{
+            width: 200px;
+            height: 100px;
+            background: red;
+        }
+        .child{
+            width: 100%;
+            height: 80px;
+            padding: 0 10px;
+            background: blueviolet;
+            box-sizing: border-box;
+        }
+        a[href]{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">
+
+        </div>
+    </div>
+    <a href="">超链接</a>
+    <a>哈哈</a>
+</body>
+<script type="module">
+    import { str }  from '../js/A.js'
+    console.log(str)
+</script>
+<script>
+    // let a  = [...'hello']
+    // console.log('a=====',a)
+    var arr = [1,2,3,4,5]
+    console.log(...arr)
+    console.log(typeof arr)
+
+
+    var obj = {name: 'zhang', age: 29}
+    var obj1 = {...obj};
+    // obj.name = 'zhao'
+    // console.log(obj)
+    // console.log(obj1);
+
+    (function () {
+        var a = b = 5
+    })();
+    //console.log(b)
+    //console.log(a)
+
+    var a = 10;
+    function fn(){
+        console.log(a);
+    }
+    function bar(f){
+        var a = 20;
+        f();
+    }
+    bar(fn)
+
+</script>
+</html>

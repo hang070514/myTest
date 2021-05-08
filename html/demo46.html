@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{
+            color: red;
+            margin-left: 20px;
+            padding-top: 30px;
+        }
+        .parent{
+            border: 1px solid blue;
+        }
+        .parent:after{
+            display: block;
+            clear: both;
+            content: '';
+            overflow: hidden;
+            height: 0;
+        }
+        .child1{
+            float: left;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        .child2{
+            float: left;
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+     /*   .clear{
+            clear: both;
+        }*/
+    </style>
+</head>
+<body>
+    <span>第一个span标签</span>
+    <span>第二个span标签</span>
+    <div class="parent">
+        <div class="child1"></div>
+        <div class="child2"></div>
+        <div class="clear"></div>
+    </div>
+</body>
+<script>
+    // 防抖函数是指n秒后才会执行函数，如果在n秒内回调函数被触发，则重新计算
+    function debounce(fn,delay){
+        let timer = null
+        return function(){
+            let args = arguments
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                fn.apply(this,args)
+            },delay)
+        }
+    }
+
+    // 节流函数是指规定一个单位时间，在这单位时间内只能执行一次函数，如果被触发多次，只有一次有效
+    function throttle(fn,delay){
+        let lastTime = 0
+        return function() {
+            let nowTime = Date.now()
+            let args = arguments
+            if (nowTime - lastTime > delay) {
+                fn.apply(this,args)
+                lastTime = nowTime
+            }
+        }
+    }
+
+    Function.prototype.call = function (context) {
+        var context = context || window
+        context.fn = this
+
+        let args = []
+        for(let i =1; i < arguments.length; i++){
+            args.push('arguments['+i+']')
+        }
+        let result = eval('context.fn('+args+')')
+        delete context.fn
+
+        return result
+    }
+
+    Function.prototype.apply = function (context) {
+
+    }
+  /*  var foo = {n:1}
+    (function (foo) {
+       console.log(foo.n)
+        foo.n = 3
+        var foo = {n:2}
+        console.log(foo.n)
+    })(foo)
+    console.log(foo.n)*/
+    (function f() {
+        console.log('hhhhh')
+    })()
+</script>
+</html>

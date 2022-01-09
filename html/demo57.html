@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" id="a">
+    <span id="b"></span>
+  </div>
+</body>
+<script>
+  var obj = {}
+  var val = 'zhang'
+  Object.defineProperty(obj, 'val', {
+    get: function() {
+      return val;
+    },
+    set: function(newValue) {
+      val = newValue
+      console.log('val====', val)
+      document.getElementById('a').value = val
+      document.getElementById('b').innerHTML = val
+    }
+  })
+
+  document.addEventListener('keyup', function (e){
+    console.log('e.target.value====', e.target.value)
+    obj.val = e.target.value
+  })
+
+</script>
+</html>

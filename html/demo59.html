@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let ws = new WeakSet()
+    ws.add({name: 'zh', age: 30})
+    ws.add({name: 'wang', age: 10})
+    ws.add({name: 'li', age: 62})
+    ws.add({name: 'li', age: 62})
+    // console.log('ws====', ws)
+
+    var data = [
+        {name:'1'},
+        {name:'2'},
+        {name:'3'},
+        {name:'4'},
+        {name:'5'},
+        {name:'6'},
+        {name:'7'},
+        {name:'8'},
+        {name:'9'},
+        {name:'0'},
+    ]
+    var result = [];
+    for(var i=0;i<data.length;i+=3){
+        result.push(data.slice(i,i+3));
+    }
+    // console.log(result)
+
+    let str = 'B*捐赠了【中央专项彩票公益金“大病儿童救助项目”——白血病儿童资助】项目'
+    console.log(str.indexOf('【'))
+    console.log(str.indexOf('】'))
+    console.log('star1=====',str)
+    console.log(str.substring(0, str.indexOf('【')) +
+        str.substr(str.indexOf('】') + 1, str.length))
+    console.log('star2=====',str)
+    console.log(str.substring(str.indexOf('【'), str.indexOf('】') + 1))
+</script>
+</html>

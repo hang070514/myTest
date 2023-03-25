@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .scrollTest {
+            height: 300px;
+            white-space: nowrap;
+            overflow-x: scroll;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+        .box{
+            display: inline-block;
+            width: 150px;
+            height: 200px;
+            border: 1px solid red;
+            margin-left: 15px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<div class="scrollTest">
+    <div class="box" v-for="(item, index) in list"></div>
+</div>
+</body>
+<!--<script type="module" src="../js/test1.js">-->
+<!--</script>-->
+<script>
+    // async function f() {
+    //     throw new Error('出错了')
+    // }
+    // f().then(
+    //     v => console.log('resolve',v),
+    //     e => console.log('reject', e)
+    // )
+
+    function sleep(interval){
+        return new Promise(resolve => {
+            setTimeout(resolve,interval)
+        })
+    }
+    async function one() {
+        for(let i = 0; i <= 5; i++){
+            console.log(i)
+            await sleep(2000)
+        }
+    }
+    one()
+</script>
+</html>
